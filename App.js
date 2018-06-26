@@ -1,23 +1,51 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import styled from 'styled-components/native'
+import RF from 'react-native-responsive-fontsize'
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <ContainerView>
+                <DecksText style={styles.h3}>DECKS</DecksText>
+
+                <CenterView>
+                    <DeckTitleText style={styles.h1}>Deck Title</DeckTitleText>
+                    <NumCardsText style={styles.h2}>Number of cards</NumCardsText>
+                </CenterView>
+            </ContainerView>
+        )
+    }
 }
 
+const ContainerView = styled.View`
+        flex: 1;
+    `,
+    DecksText = styled.Text`
+        margin-left: 20%;
+        margin-top: 20%;
+    `,
+    CenterView = styled.View`
+        align-items: center;
+    `,
+    DeckTitleText = styled.Text`
+        font-weight: bold;
+        margin-top: 10%;
+    `,
+    NumCardsText = styled.Text`
+        color: #777;
+        margin-top: 1%;
+    `
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    h1: {
+        fontSize: RF(5)
+    },
+    h2: {
+        fontSize: RF(4)
+    },
+    h3: {
+        fontSize: RF(3)
+    }
+})
+
