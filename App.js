@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 import { black } from './utils/colors'
 import { Constants } from 'expo'
-import RF from 'react-native-responsive-fontsize'
 import ListDecks from './components/ListDecks'
 import ViewDeck from './components/ViewDeck'
 
@@ -28,10 +27,6 @@ class FlashcardsApp extends Component {
                     barStyle="light-content"
                 />
 
-                <DecksText
-                    style={styles.h3}>DECKS
-                </DecksText>
-
                 <ViewDeck />
             </ContainerView>
         )
@@ -40,16 +35,6 @@ class FlashcardsApp extends Component {
 
 const ContainerView = styled.View`
         flex: 1;
-    `,
-    DecksText = styled.Text`
-        margin-left: 10%;
-        margin-top: 10%;
     `
-
-const styles = StyleSheet.create({
-    h3: {
-        fontSize: RF(3)
-    }
-})
 
 export default FlashcardsApp

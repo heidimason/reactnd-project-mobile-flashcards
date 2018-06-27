@@ -7,20 +7,30 @@ import { gray } from '../utils/colors'
 class ListDecks extends Component {
     render() {
         return (
-            <CenterView>
-                <DeckTitleText
-                    style={styles.h1}>Deck Title
-                </DeckTitleText>
+            <View>
+                <HeaderText
+                    style={styles.h3}>DECKS
+                </HeaderText>
 
-                <NumCardsText
-                    style={styles.h2}>Number of cards
-                </NumCardsText>
-            </CenterView>
+                <CenterView>
+                    <DeckTitleText
+                        style={styles.h1}>Deck Title
+                    </DeckTitleText>
+
+                    <NumCardsText
+                        style={styles.h2}>Number of cards
+                    </NumCardsText>
+                </CenterView>
+            </View>
         )
     }
 }
 
-const CenterView = styled.View`
+const HeaderText = styled.Text`
+        margin-top: 10%;
+        margin-left: 10%;
+    `,
+    CenterView = styled.View`
         align-items: center;
     `,
     DeckTitleText = styled.Text`
@@ -38,6 +48,9 @@ const styles = StyleSheet.create({
     h2: {
         fontSize: RF(4),
         color: gray
+    },
+    h3: {
+        fontSize: RF(3)
     }
 })
 

@@ -9,25 +9,38 @@ import SubmitBtnTransparent from './SubmitBtnTransparent'
 class ViewDeck extends Component {
     render() {
         return (
-            <CenterView>
-                <DeckTitleText
-                    style={styles.h1}>Deck Title
-                </DeckTitleText>
+            <View>
+                <HeaderText
+                    style={styles.h3}>Deck Title
+                </HeaderText>
 
-                <NumCardsText
-                    style={styles.h2}>Number of cards
-                </NumCardsText>
+                <CenterView>
+                    <DeckTitleText
+                        style={styles.h1}>Deck Title
+                    </DeckTitleText>
 
-                <SubmitBtnTransparent>Add Card</SubmitBtnTransparent>
-                <SubmitBtn
-                    style={{backgroundColor: black, marginTop: '3%'}}>Start Quiz
-                </SubmitBtn>
-            </CenterView>
+                    <NumCardsText
+                        style={styles.h2}>Number of cards
+                    </NumCardsText>
+
+                    <SubmitBtnTransparent>Add Card</SubmitBtnTransparent>
+                    <SubmitBtn
+                        style={{backgroundColor: black, marginTop: '3%'}}>Start Quiz
+                    </SubmitBtn>
+                </CenterView>
+            </View>
         )
     }
 }
 
-const CenterView = styled.View`
+const HeaderText = styled.Text`
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        padding: 5% 10%;
+        width: 100%;
+    `,
+    CenterView = styled.View`
         align-items: center;
     `,
     DeckTitleText = styled.Text`
@@ -45,6 +58,9 @@ const styles = StyleSheet.create({
     h2: {
         fontSize: RF(4),
         color: gray
+    },
+    h3: {
+        fontSize: RF(3)
     }
 })
 

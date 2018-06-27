@@ -28,9 +28,11 @@ const styles = StyleSheet.create({
     	borderRadius: 7,
     	height: 45,
     	marginLeft: 40,
-    	marginRight: 40,
+    	marginRight: 40
   	},
   	AndroidSubmitBtnTransparent: {
+        borderColor: black,
+        borderWidth: 1,
     	padding: 10,
     	paddingLeft: 30,
     	paddingRight: 30,
@@ -38,12 +40,12 @@ const styles = StyleSheet.create({
     	borderRadius: 2,
     	alignSelf: 'flex-end',
     	justifyContent: 'center',
-    	alignItems: 'center',
+    	alignItems: 'center'
   	},
   	submitBtnText: {
         color: black,
     	fontSize: RF(3),
-    	textAlign: 'center',
+    	textAlign: 'center'
   	}
 })
 
