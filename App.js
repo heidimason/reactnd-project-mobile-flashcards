@@ -1,14 +1,35 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
+import { black } from './utils/colors'
+import { Constants } from 'expo'
 import RF from 'react-native-responsive-fontsize'
 import ListDecks from './components/ListDecks'
+
+function UdaciStatusBar ({backgroundColor, ...props}) {
+    return (
+        <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+            <StatusBar
+                translucent
+                backgroundColor={backgroundColor}
+                {...props}
+            />
+        </View>
+    )
+}
 
 class FlashcardsApp extends Component {
     render() {
         return (
             <ContainerView>
-                <DecksText style={styles.h3}>DECKS</DecksText>
+                <UdaciStatusBar
+                    backgroundColor={black}
+                    barStyle="light-content"
+                />
+
+                <DecksText
+                    style={styles.h3}>DECKS
+                </DecksText>
 
                 <ListDecks />
             </ContainerView>
@@ -20,8 +41,8 @@ const ContainerView = styled.View`
         flex: 1;
     `,
     DecksText = styled.Text`
-        margin-left: 20%;
-        margin-top: 20%;
+        margin-left: 10%;
+        margin-top: 10%;
     `
 
 const styles = StyleSheet.create({
@@ -31,4 +52,3 @@ const styles = StyleSheet.create({
 })
 
 export default FlashcardsApp
-
