@@ -5,6 +5,7 @@ import { black } from './utils/colors'
 import { Constants } from 'expo'
 import RF from 'react-native-responsive-fontsize'
 import ListDecks from './components/ListDecks'
+import ViewDeck from './components/ViewDeck'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
     return (
@@ -31,7 +32,7 @@ class FlashcardsApp extends Component {
                     style={styles.h3}>DECKS
                 </DecksText>
 
-                <ListDecks />
+                <ViewDeck />
             </ContainerView>
         )
     }
