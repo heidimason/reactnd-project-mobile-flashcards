@@ -1,32 +1,41 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
+import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
+import { fonts } from '../utils/fonts'
 import RF from 'react-native-responsive-fontsize'
-import { gray, white, black } from '../utils/colors'
+import { white, black } from '../utils/colors'
 import SubmitBtn from './SubmitBtn'
-import SubmitBtnTransparent from './SubmitBtnTransparent'
+import DeckTitle from './DeckTitle'
+import { btns } from '../utils/btns'
 
 class ViewDeck extends Component {
     render() {
         return (
             <View>
                 <HeaderText
-                    style={styles.h3}>Deck Title
+                    style={fonts.h3}>
+                    <Entypo
+                        name={'arrow-long-left'}
+                        size={RF(3)}
+                    />     Deck Title
                 </HeaderText>
 
                 <CenterView>
-                    <DeckTitleText
-                        style={styles.h1}>Deck Title
-                    </DeckTitleText>
+                    <DeckTitle />
 
-                    <NumCardsText
-                        style={styles.h2}>Number of cards
-                    </NumCardsText>
+                    <View style={btns.bottomBtn}>
+                        <SubmitBtn
+                            style={{borderColor: black, borderWidth: 1}}>Add Card
+                        </SubmitBtn>
 
-                    <SubmitBtnTransparent>Add Card</SubmitBtnTransparent>
-                    <SubmitBtn
-                        style={{backgroundColor: black, marginTop: '3%'}}>Start Quiz
-                    </SubmitBtn>
+                        <SubmitBtn
+                            style={{backgroundColor: black, marginTop: '3%'}}>
+                            <Text
+                                style={{color: white}}>Start Quiz
+                            </Text>
+                        </SubmitBtn>
+                    </View>
                 </CenterView>
             </View>
         )
@@ -38,30 +47,10 @@ const HeaderText = styled.Text`
         color: white;
         font-weight: bold;
         padding: 5% 10%;
-        width: 100%;
     `,
     CenterView = styled.View`
         align-items: center;
-    `,
-    DeckTitleText = styled.Text`
-        font-weight: bold;
-        margin-top: 10%;
-    `,
-    NumCardsText = styled.Text`
-        margin-top: 1%;
+        height: 90%;
     `
-
-const styles = StyleSheet.create({
-    h1: {
-        fontSize: RF(5)
-    },
-    h2: {
-        fontSize: RF(4),
-        color: gray
-    },
-    h3: {
-        fontSize: RF(3)
-    }
-})
 
 export default ViewDeck

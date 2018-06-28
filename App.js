@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, StatusBar } from 'react-native'
+import { Text, View, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 import { black } from './utils/colors'
 import { Constants } from 'expo'
