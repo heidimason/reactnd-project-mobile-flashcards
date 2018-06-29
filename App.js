@@ -6,6 +6,7 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import RF from 'react-native-responsive-fontsize'
 import ListDecks from './components/ListDecks'
+import NewDeck from './components/NewDeck'
 import ViewDeck from './components/ViewDeck'
 import ViewQuiz from './components/ViewQuiz'
 
@@ -34,10 +35,10 @@ const Tabs = createBottomTabNavigator({
                 />
         },
     },
-    ViewDeck: {
-        screen: ViewDeck,
+    NewDeck: {
+        screen: NewDeck,
         navigationOptions: {
-            tabBarLabel: 'Add Entry',
+            tabBarLabel: 'Add Deck',
             tabBarIcon: ({ tintColor }) =>
                 <FontAwesome
                     name='plus-square'
@@ -69,6 +70,9 @@ const MainNavigator = createStackNavigator({
         navigationOptions: {
             header: null
         }
+    },
+    NewDeck: {
+        screen: NewDeck
     },
     ViewDeck: {
         screen: ViewDeck
