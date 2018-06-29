@@ -4,14 +4,14 @@ import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { forms } from '../utils/forms'
-import { black } from '../utils/colors'
+import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
 import SubmitBtn from './SubmitBtn'
 
 class NewDeck extends Component {
     render() {
         return (
-            <View>
+            <ContainerView>
                 <HeaderText
                     style={fonts.h3}>NEW DECK
                 </HeaderText>
@@ -22,19 +22,27 @@ class NewDeck extends Component {
                     </DeckTitleText>
 
                     <View style={btns.bottomBtn}>
-                        <TitleTextInput style={[fonts.h3, forms.textInput]} placeholder="Deck Title" selectionColor={black}/>
+                        <TextInput
+                            placeholder="Deck Title"
+                            style={[fonts.h3, forms.textInput]}
+                            selectionColor={black}
+                            underlineColorAndroid='rgba(0,0,0,0)'
+                        />
 
                         <SubmitBtn
                             style={{backgroundColor: black, marginTop: '10%'}}>Submit
                         </SubmitBtn>
                     </View>
                 </CenterView>
-            </View>
+            </ContainerView>
         )
     }
 }
 
-const HeaderText = styled.Text`
+const ContainerView = styled.View`
+        background-color: white;
+    `,
+    HeaderText = styled.Text`
         padding: 10%;
         position: absolute;
         text-align: right;
@@ -48,9 +56,6 @@ const HeaderText = styled.Text`
     DeckTitleText = styled.Text`
         padding: 10%;
         text-align: center;
-    `,
-    TitleTextInput = styled.TextInput`
-
     `
 
 export default NewDeck

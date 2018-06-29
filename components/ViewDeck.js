@@ -12,7 +12,7 @@ import SubmitBtn from './SubmitBtn'
 class ViewDeck extends Component {
     render() {
         return (
-            <View>
+            <ContainerView>
                 <HeaderText
                     style={fonts.h3}>
                     <Entypo
@@ -37,12 +37,15 @@ class ViewDeck extends Component {
                         </SubmitBtn>
                     </View>
                 </CenterView>
-            </View>
+            </ContainerView>
         )
     }
 }
 
-const HeaderText = styled.Text`
+const ContainerView = styled.View`
+        backgroundColor: white;
+    `,
+    HeaderText = styled.Text`
         background-color: black;
         color: white;
         font-weight: bold;

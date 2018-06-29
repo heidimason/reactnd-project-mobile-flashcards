@@ -7,7 +7,7 @@ import DeckTitle from './DeckTitle'
 class ListDecks extends Component {
     render() {
         return (
-            <View>
+            <ContainerView>
                 <HeaderText
                     style={fonts.h3}>DECKS
                 </HeaderText>
@@ -15,12 +15,16 @@ class ListDecks extends Component {
                 <CenterView>
                     <DeckTitle />
                 </CenterView>
-            </View>
+            </ContainerView>
         )
     }
 }
 
-const HeaderText = styled.Text`
+const ContainerView = styled.View`
+        background-color: white;
+        height: 100%;
+    `,
+    HeaderText = styled.Text`
         padding-top: 10%;
         padding-left: 10%;
     `,
