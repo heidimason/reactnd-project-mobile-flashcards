@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Text, View, StatusBar, Platform } from 'react-native'
-import styled from 'styled-components/native'
 import { black, white } from './utils/colors'
 import { Constants } from 'expo'
-import { createBottomTabNavigator } from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import RF from 'react-native-responsive-fontsize'
 import ListDecks from './components/ListDecks'
@@ -47,9 +46,6 @@ const Tabs = createBottomTabNavigator({
         },
     },
 }, {
-    navigationOptions: {
-        header: null
-    },
     tabBarOptions: {
         activeTintColor: Platform.OS === 'ios' ? black : white,
         style: {
@@ -66,23 +62,31 @@ const Tabs = createBottomTabNavigator({
     }
 })
 
+const MainNavigator = createStackNavigator({
+    Home: {
+        screen: Tabs,
+        navigationOptions: {
+            header: null
+        }
+    },
+    ViewDeck: {
+        screen: ViewDeck
+    }
+})
+
 class FlashcardsApp extends Component {
     render() {
         return (
-            <ContainerView>
+            <View style={{flex: 1}}>
                 <UdaciStatusBar
                     backgroundColor={black}
                     barStyle="light-content"
                 />
 
-                <Tabs />
-            </ContainerView>
+                <MainNavigator />
+            </View>
         )
     }
 }
-
-const ContainerView = styled.View`
-        flex: 1;
-    `
 
 export default FlashcardsApp
