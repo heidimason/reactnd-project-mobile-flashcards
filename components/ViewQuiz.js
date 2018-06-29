@@ -4,12 +4,11 @@ import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import RF from 'react-native-responsive-fontsize'
-import { white, black } from '../utils/colors'
+import { white, black, green, red } from '../utils/colors'
 import SubmitBtn from './SubmitBtn'
-import DeckTitle from './DeckTitle'
 import { btns } from '../utils/btns'
 
-class ViewDeck extends Component {
+class ViewQuiz extends Component {
     render() {
         return (
             <View>
@@ -18,22 +17,21 @@ class ViewDeck extends Component {
                     <Entypo
                         name={'arrow-long-left'}
                         size={RF(3)}
-                    />     Deck Title
+                    />     Quiz
                 </HeaderText>
 
                 <CenterView>
-                    <DeckTitle />
+                    <Text>2/2</Text>
+                    <Text>Quiz Question</Text>
+                    <AnswerText>Answer</AnswerText>
 
                     <View style={btns.bottomBtn}>
                         <SubmitBtn
-                            style={{borderColor: black, borderWidth: 1}}>
-                            <Text
-                                style={{color: black}}>Add Card
-                            </Text>
+                            style={{backgroundColor: green}}>Correct
                         </SubmitBtn>
 
                         <SubmitBtn
-                            style={{backgroundColor: black, marginTop: '3%'}}>Start Quiz
+                            style={{backgroundColor: red, marginTop: '3%'}}>Incorrect
                         </SubmitBtn>
                     </View>
                 </CenterView>
@@ -54,6 +52,10 @@ const HeaderText = styled.Text`
         align-items: center;
         justify-content: center;
         height: 100%;
+    `,
+
+    AnswerText = styled.Text`
+        color: red;
     `
 
-export default ViewDeck
+export default ViewQuiz

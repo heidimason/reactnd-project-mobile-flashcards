@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native'
+import { white } from '../utils/colors'
 import RF from 'react-native-responsive-fontsize'
 
 export const btns = StyleSheet.create({
     bottomBtn: {
         position: 'absolute',
-        bottom: '10%',
-        width: '100%'
+        bottom: '5%',
+        width: '90%'
     },
     iosSubmitBtn: {
         padding: 10,
@@ -25,6 +26,7 @@ export const btns = StyleSheet.create({
         alignItems: 'center'
     },
     submitBtnText: {
+        color: white,
         fontSize: RF(3),
         fontWeight: 'bold',
         textAlign: 'center'
