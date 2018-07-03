@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StatusBar, Platform } from 'react-native'
+import { View, StatusBar, Platform } from 'react-native'
 import { black, white } from './utils/colors'
 import { Constants } from 'expo'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
@@ -7,7 +7,7 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import RF from 'react-native-responsive-fontsize'
 import ListDecks from './components/ListDecks'
 import NewDeck from './components/NewDeck'
-import ViewDeck from './components/ViewDeck'
+import DeckView from './components/DeckView'
 import ViewQuiz from './components/ViewQuiz'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
@@ -74,8 +74,8 @@ const MainNavigator = createStackNavigator({
     NewDeck: {
         screen: NewDeck
     },
-    ViewDeck: {
-        screen: ViewDeck
+    DeckView: {
+        screen: DeckView
     },
     ViewQuiz: {
         screen: ViewQuiz

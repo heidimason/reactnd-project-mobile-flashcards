@@ -9,7 +9,7 @@ import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
 import SubmitBtn from './SubmitBtn'
 
-class ViewDeck extends Component {
+class DeckView extends Component {
     render() {
         return (
             <ContainerView>
@@ -59,4 +59,4 @@ const ContainerView = styled.View`
         height: 100%;
     `
 
-export default ViewDeck
+export default DeckView
