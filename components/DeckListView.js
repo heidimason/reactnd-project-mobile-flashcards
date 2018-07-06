@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList } from 'react-native'
+import { View, FlatList, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { colors } from '../utils/colors'
-import getDecks from '../mock/decks'
+import { getDecks } from '../utils/api'
 
 function DeckData ({ title, numCards }) {
     return (
@@ -20,21 +20,46 @@ function DeckData ({ title, numCards }) {
 }
 
 class DeckListView extends Component {
+    state = {
+        decks: []
+    }
+
+    // Get all decks added by user and populate decks array
+    getAllDecks() {
+        getDecks().then( decks =>
+            this.setState({ decks })
+        ).catch( err =>
+            alert(err)
+        )
+    }
+
+    componentDidMount () {
+        this.getAllDecks()
+    }
+
     renderItem = ({ item }) => {
         return <DeckData {...item} />
     }
 
     render() {
-        const decks = getDecks()
+        const { decks } = this.state
 
         return (
-            <FlatList
-                data={decks}
-                renderItem={this.renderItem}
-                keyExtractor={
-                    (item, index) => index.toString()
+            <View>
+                { decks !== undefined ?
+                    <FlatList
+                        data={decks}
+                        renderItem={this.renderItem}
+                        keyExtractor={
+                            (item, index) => index.toString()
+                        }
+                    />
+                    :
+                    <NoDecksText
+                        style={fonts.h2}>You have not added any decks
+                    </NoDecksText>
                 }
-            />
+            </View>
         )
     }
 }
@@ -45,6 +70,10 @@ const CenterView = styled.View`
         border-bottom-width: 1;
         margin-right: 5%;
         margin-left: 5%;
+    `,
+    NoDecksText = styled.Text`
+        margin-top: 15%;
+        text-align: center;
     `,
     DeckTitleText = styled.Text`
         font-weight: bold;
