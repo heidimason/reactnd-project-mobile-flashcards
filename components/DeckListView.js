@@ -3,7 +3,8 @@ import { View, FlatList, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { colors } from '../utils/colors'
-import { getDecks } from '../utils/api'
+import { connect } from 'react-redux'
+import { fetchDecks } from '../actions'
 
 function DeckData ({ title, numCards }) {
     return (
@@ -20,21 +21,8 @@ function DeckData ({ title, numCards }) {
 }
 
 class DeckListView extends Component {
-    state = {
-        decks: []
-    }
-
-    // Get all decks added by user and populate decks array
-    getAllDecks() {
-        getDecks().then( decks =>
-            this.setState({ decks })
-        ).catch( err =>
-            alert(err)
-        )
-    }
-
     componentDidMount () {
-        this.getAllDecks()
+        this.props.getAllDecks()
     }
 
     renderItem = ({ item }) => {
@@ -42,7 +30,7 @@ class DeckListView extends Component {
     }
 
     render() {
-        const { decks } = this.state
+        const { decks } = this.props
 
         return (
             <View>
@@ -85,4 +73,16 @@ const CenterView = styled.View`
         margin-bottom: 15%;
     `
 
-export default DeckListView
+const mapStateToProps = state => {
+    return {
+        decks: state.decks
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getAllDecks: () => dispatch( fetchDecks() )
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeckListView)

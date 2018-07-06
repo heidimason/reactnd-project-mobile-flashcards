@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import store from './store'
 import { View, StatusBar, Platform } from 'react-native'
 import { black, white } from './utils/colors'
 import { Constants } from 'expo'
@@ -85,14 +87,16 @@ const MainNavigator = createStackNavigator({
 class FlashcardsApp extends Component {
     render() {
         return (
-            <View style={{flex: 1}}>
-                <UdaciStatusBar
-                    backgroundColor={black}
-                    barStyle="light-content"
-                />
+            <Provider store={store}>
+                <View style={{flex: 1}}>
+                    <UdaciStatusBar
+                        backgroundColor={black}
+                        barStyle="light-content"
+                    />
 
-                <MainNavigator />
-            </View>
+                    <MainNavigator />
+                </View>
+            </Provider>
         )
     }
 }
