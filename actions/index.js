@@ -1,5 +1,6 @@
 import {
-	getDecks
+	getDecks,
+	saveDeckTitle
 } from '../utils/UdaciCardsAPI'
 
 export const FETCH_DECKS = 'FETCH_DECKS'
@@ -15,6 +16,20 @@ export const fetchDecks = () => {
 				})
 			).catch( () =>
 				alert('Error getting decks!')
+			)
+	}
+}
+
+export const addDeck = d => {
+	return dispatch => {
+		saveDeckTitle(d)
+			.then( deck =>
+				dispatch({
+					type: ADD_DECK,
+					deck
+				})
+			).catch( () =>
+				alert('Error adding deck!')
 			)
 	}
 }

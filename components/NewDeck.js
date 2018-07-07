@@ -8,16 +8,19 @@ import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
 import SubmitBtn from './SubmitBtn'
 import { NavigationActions } from 'react-navigation'
+import { connect } from 'react-redux'
+import { addDeck } from '../actions'
+import serializeForm from 'form-serialize'
+import uuid from 'uuid'
 
 class NewDeck extends Component {
     state = {
+        id: '',
         title: ''
     }
 
-    changeTitle = e => {
-        this.setState({
-            title: e.target.value
-        })
+    changeTitle = title => {
+        this.setState({title})
     }
 
     toHome = () => {
@@ -27,10 +30,27 @@ class NewDeck extends Component {
     }
 
     addDeck = e => {
-        e.preventDefault()
+        if (this.state.title !== '') {
+            const values = serializeForm(e.target, { hash: true })
 
-        // Navigate to home
-        this.toHome()
+            const deck = Object.assign(values, {
+                id: uuid(),
+                title: this.state.title
+            })
+
+            this.props.addDeckTitle(deck)
+
+            // alert(deck.title)
+
+            // Navigate to home
+            this.toHome()
+        } else {
+            alert('Please enter a title')
+        }
+
+        this.setState({
+            title: ''
+        })
     }
 
     render() {
@@ -52,7 +72,7 @@ class NewDeck extends Component {
                             selectionColor={black}
                             underlineColorAndroid="rgba(0,0,0,0)"
                             value={this.state.title}
-                            onChange={this.changeTitle}
+                            onChangeText={this.changeTitle}
                         />
 
                         <SubmitBtn
@@ -85,4 +105,10 @@ const ContainerView = styled.View`
         text-align: center;
     `
 
-export default NewDeck
+const mapDispatchToProps = dispatch => {
+    return {
+        addDeckTitle: d => dispatch( addDeck(d) )
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NewDeck)
