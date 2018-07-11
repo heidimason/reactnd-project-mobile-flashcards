@@ -6,40 +6,48 @@ import { colors } from '../utils/colors'
 import { connect } from 'react-redux'
 import { fetchDecks } from '../actions'
 
-function DeckData ({ title, numCards }) {
+const DeckListItem = ({ title, questions }) => {
     return (
         <CenterView>
             <DeckTitleText
                 style={fonts.h1}>{title}
             </DeckTitleText>
 
-            <NumCardsText
-                style={fonts.h2}>{numCards} cards
-            </NumCardsText>
+            { questions.length !== 1 ?
+                <NumCardsText
+                    style={fonts.h2}>{questions.length} cards
+                </NumCardsText>
+                :
+                <NumCardsText
+                    style={fonts.h2}>{questions.length} card
+                </NumCardsText>
+            }
         </CenterView>
     )
 }
 
 class DeckListView extends Component {
     componentDidMount () {
-        this.props.getAllDecks()
+        this.props.fetchAllDecks()
     }
 
     renderItem = ({ item }) => {
-        return <DeckData {...item} />
+        return <DeckListItem {...item} />
     }
 
     render() {
         const { decks } = this.props
 
+        let d = Object.keys(decks).map(k => decks[k])
+
         return (
             <View>
                 { decks !== undefined ?
                     <FlatList
-                        data={decks}
+                        data={d}
                         renderItem={this.renderItem}
                         keyExtractor={
-                            (item, index) => index.toString()
+                            (item, index) => item.id
                         }
                     />
                     :
@@ -55,7 +63,7 @@ class DeckListView extends Component {
 const CenterView = styled.View`
         align-items: center;
         border-bottom-color: gray;
-        border-bottom-width: 1;
+        border-bottom-width: 2;
         margin-right: 5%;
         margin-left: 5%;
     `,
@@ -73,15 +81,15 @@ const CenterView = styled.View`
         margin-bottom: 15%;
     `
 
-const mapStateToProps = state => {
+const mapStateToProps = decks => {
     return {
-        decks: state.decks
+        decks
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getAllDecks: () => dispatch( fetchDecks() )
+        fetchAllDecks: () => dispatch( fetchDecks() )
     }
 }
 
