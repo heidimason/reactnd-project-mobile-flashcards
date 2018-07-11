@@ -3,10 +3,16 @@ import {
 	ADD_DECK
 } from '../actions'
 
-function decks(state = [], action) {
+const initialState = {
+	decks: []
+}
+
+function decks(state = initialState, action) {
+	const { decks } = action
+
 	switch (action.type) {
 		case FETCH_DECKS:
-			return action.decks
+			return Object.keys(decks).map(k => decks[k])
 		case ADD_DECK:
 			return [
 				...state,
