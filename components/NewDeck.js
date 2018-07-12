@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput } from 'react-native'
-import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { forms } from '../utils/forms'
 import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
 import SubmitBtn from './SubmitBtn'
-import { NavigationActions } from 'react-navigation'
+import uuid from 'uuid'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
-import serializeForm from 'form-serialize'
-import uuid from 'uuid'
+import { NavigationActions } from 'react-navigation'
 
 class NewDeck extends Component {
     state = {
@@ -23,34 +21,41 @@ class NewDeck extends Component {
         this.setState({title})
     }
 
+    // toDeck = d => {
+    //     this.props.navigation.navigate(
+    //         'DeckView', {deck: d}
+    //     )
+    // }
+
     toHome = () => {
         this.props.navigation.dispatch(
             NavigationActions.back({key: 'NewDeck'})
         )
     }
 
-    addDeck = e => {
+    submitDeckTitle = () => {
         if (this.state.title !== '') {
-            const values = serializeForm(e.target, { hash: true })
-
-            const deck = Object.assign(values, {
+            const deck = Object.assign({
                 id: uuid(),
-                title: this.state.title
+                title: this.state.title,
+                questions: []
             })
 
+            // Dispatch action
             this.props.addDeckTitle(deck)
 
-            // alert(deck.title)
-
-            // Navigate to home
+            // Navigate to individual deck view
+            // this.toDeck()
             this.toHome()
+
+            // Reset
+            this.setState({
+                id: '',
+                title: ''
+            })
         } else {
             alert('Please enter a title')
         }
-
-        this.setState({
-            title: ''
-        })
     }
 
     render() {
@@ -77,7 +82,7 @@ class NewDeck extends Component {
 
                         <SubmitBtn
                             style={{backgroundColor: black, marginTop: '10%'}}
-                            onPress={this.addDeck}>Submit
+                            onPress={this.submitDeckTitle}>Create Deck
                         </SubmitBtn>
                     </View>
                 </CenterView>

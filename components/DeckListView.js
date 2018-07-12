@@ -13,11 +13,13 @@ const DeckListItem = ({ title, questions }) => {
                 style={fonts.h1}>{title}
             </DeckTitleText>
 
-            { questions.length !== 1 ?
+            { questions && questions.length !== 1 &&
                 <NumCardsText
                     style={fonts.h2}>{questions.length} cards
                 </NumCardsText>
-                :
+            }
+
+            { questions && questions.length === 1 &&
                 <NumCardsText
                     style={fonts.h2}>{questions.length} card
                 </NumCardsText>

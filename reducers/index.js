@@ -8,7 +8,7 @@ const initialState = {
 }
 
 function decks(state = initialState, action) {
-	const { decks } = action
+	const { decks, deck } = action
 
 	switch (action.type) {
 		case FETCH_DECKS:
@@ -16,7 +16,7 @@ function decks(state = initialState, action) {
 		case ADD_DECK:
 			return [
 				...state,
-				action.deck
+				deck
 			]
   		default:
 			return state
