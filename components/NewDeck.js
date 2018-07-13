@@ -8,7 +8,7 @@ import { btns } from '../utils/btns'
 import SubmitBtn from './SubmitBtn'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
-import { addDeck } from '../actions'
+import { addDeck, fetchDecks } from '../actions'
 import { NavigationActions } from 'react-navigation'
 
 class NewDeck extends Component {
@@ -34,6 +34,8 @@ class NewDeck extends Component {
     }
 
     submitDeckTitle = () => {
+        const { addDeckTitle, fetchAllDecks } = this.props
+
         if (this.state.title !== '') {
             const deck = Object.assign({
                 id: uuid(),
@@ -42,7 +44,10 @@ class NewDeck extends Component {
             })
 
             // Dispatch action
-            this.props.addDeckTitle(deck)
+            addDeckTitle(deck)
+
+            // Refresh decks
+            fetchAllDecks()
 
             // Navigate to individual deck view
             // this.toDeck()
@@ -112,7 +117,8 @@ const ContainerView = styled.View`
 
 const mapDispatchToProps = dispatch => {
     return {
-        addDeckTitle: d => dispatch( addDeck(d) )
+        addDeckTitle: d => dispatch( addDeck(d) ),
+        fetchAllDecks: () => dispatch( fetchDecks() )
     }
 }
 
