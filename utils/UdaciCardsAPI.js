@@ -18,13 +18,13 @@ const formatDecks = res => {
 export const getDecks = () =>
 	// AsyncStorage.clear()
 
-	AsyncStorage.getItem(DECKS_STORAGE_KEY)
-		.then(formatDecks)
-
 	// AsyncStorage.getItem(DECKS_STORAGE_KEY)
-	// 	.then(res => {
-	// 		return JSON.parse(res)
-	// 	})
+	// 	.then(formatDecks)
+
+	AsyncStorage.getItem(DECKS_STORAGE_KEY)
+		.then(res => {
+			return JSON.parse(res)
+		})
 
 export const saveDeckTitle = title =>
 	AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
