@@ -1,6 +1,5 @@
 export const starterData = {
-	1: {
-		id: '1',
+	React: {
 		title: 'React',
 		questions: [
 			{
@@ -13,8 +12,7 @@ export const starterData = {
 		    }
 		]
 	},
-	2: {
-		id: '2',
+	JavaScript: {
 		title: 'JavaScript',
 		questions: [
 			{

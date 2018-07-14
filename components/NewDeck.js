@@ -13,7 +13,6 @@ import { NavigationActions } from 'react-navigation'
 
 class NewDeck extends Component {
     state = {
-        id: '',
         title: ''
     }
 
@@ -38,7 +37,6 @@ class NewDeck extends Component {
 
         if (this.state.title !== '') {
             const deck = Object.assign({
-                id: uuid(),
                 title: this.state.title,
                 questions: []
             })
@@ -55,7 +53,6 @@ class NewDeck extends Component {
 
             // Reset
             this.setState({
-                id: '',
                 title: ''
             })
         } else {

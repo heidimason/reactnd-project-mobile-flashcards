@@ -38,13 +38,16 @@ class DeckListView extends Component {
     }
 
     render() {
-        const { decks } = this.props
+        const { decks } = this.props,
+              decksData = Object.keys(decks).map(k => decks[k])
+
+        console.log(decks)
 
         return (
             <View>
                 { decks !== undefined ?
                     <FlatList
-                        data={decks}
+                        data={decksData}
                         renderItem={this.renderItem}
                         keyExtractor={
                             (item, index) => index.toString()
