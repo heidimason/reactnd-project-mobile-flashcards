@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, Alert } from 'react-native'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { forms } from '../utils/forms'
@@ -33,13 +33,19 @@ class NewDeck extends Component {
     }
 
     submitDeckTitle = () => {
-        const { addDeckTitle, fetchAllDecks } = this.props
+        const { addDeckTitle, fetchAllDecks } = this.props,
+                                      deckObj = this.state,
+                                    { title } = this.state
 
-        if (this.state.title !== '') {
-            const deck = Object.assign({
-                title: this.state.title,
-                questions: []
-            })
+        if (title === '') {
+            Alert.alert('Please enter a title for your deck')
+        } else {
+            const deck = {
+                [deckObj.title]: {
+                    title: deckObj.title,
+                    questions: []
+                }
+            }
 
             // Dispatch action
             addDeckTitle(deck)
@@ -55,8 +61,6 @@ class NewDeck extends Component {
             this.setState({
                 title: ''
             })
-        } else {
-            alert('Please enter a title')
         }
     }
 

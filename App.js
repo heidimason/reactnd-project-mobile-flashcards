@@ -9,6 +9,8 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import RF from 'react-native-responsive-fontsize'
 import ListDecks from './components/ListDecks'
 import NewDeck from './components/NewDeck'
+import DeckView from './components/DeckView'
+import ViewQuiz from './components/ViewQuiz'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
     return (
@@ -74,6 +76,12 @@ const MainNavigator = createStackNavigator({
     NewDeck: {
         screen: NewDeck
     },
+    DeckView: {
+        screen: DeckView
+    },
+    ViewQuiz: {
+        screen: ViewQuiz
+    }
 })
 
 class FlashcardsApp extends Component {

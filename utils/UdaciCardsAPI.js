@@ -4,15 +4,17 @@ import { starterData } from '../mock/decks'
 const DECKS_STORAGE_KEY = 'UdaciCards:decks'
 
 const setStarterData = () => {
-	AsyncStorage.setItem( DECKS_STORAGE_KEY, JSON.stringify(starterData) )
+	AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(
+		starterData
+	))
 
 	return starterData
 }
 
 const formatDecks = res => {
-	return res !== null
-		? JSON.parse(res)
-		: setStarterData()
+	return res === null
+		? setStarterData()
+		: JSON.parse(res)
 }
 
 export const getDecks = () =>
@@ -22,11 +24,9 @@ export const getDecks = () =>
 	// 	.then(formatDecks)
 
 	AsyncStorage.getItem(DECKS_STORAGE_KEY)
-		.then(res => {
-			return JSON.parse(res)
-		})
+		.then( res => JSON.parse(res) )
 
 export const saveDeckTitle = title =>
-	AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
+	AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(
     	title
-  	}))
+  	))
