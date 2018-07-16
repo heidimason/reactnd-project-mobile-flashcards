@@ -9,7 +9,6 @@ import SubmitBtn from './SubmitBtn'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
 import { addDeck, fetchDecks } from '../actions'
-import { NavigationActions } from 'react-navigation'
 
 class NewDeck extends Component {
     state = {
@@ -20,22 +19,19 @@ class NewDeck extends Component {
         this.setState({title})
     }
 
-    // toDeck = d => {
-    //     this.props.navigation.navigate(
-    //         'DeckView', {deck: d}
-    //     )
-    // }
+    toDeck = () => {
+        const deckObj = this.state
 
-    toHome = () => {
-        this.props.navigation.dispatch(
-            NavigationActions.back({key: 'NewDeck'})
-        )
+        this.props.navigation.navigate('DeckView', {
+            title: deckObj.title,
+            questions: []
+        })
     }
 
     submitDeckTitle = () => {
         const { addDeckTitle, fetchAllDecks } = this.props,
-                                      deckObj = this.state,
-                                    { title } = this.state
+                     { title } = this.state,
+                       deckObj = this.state
 
         if (title === '') {
             Alert.alert('Please enter a title for your deck')
@@ -50,17 +46,16 @@ class NewDeck extends Component {
             // Dispatch action
             addDeckTitle(deck)
 
-            // Refresh decks
-            fetchAllDecks()
-
             // Navigate to individual deck view
-            // this.toDeck()
-            this.toHome()
+            this.toDeck()
 
             // Reset
             this.setState({
                 title: ''
             })
+
+            // Refresh decks (e.g. for home screen)
+            fetchAllDecks()
         }
     }
 

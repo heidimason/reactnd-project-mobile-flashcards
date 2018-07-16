@@ -35,7 +35,7 @@ const Tabs = createBottomTabNavigator({
                     size={RF(4)}
                     color={tintColor}
                 />
-        },
+        }
     },
     NewDeck: {
         screen: NewDeck,
@@ -47,8 +47,8 @@ const Tabs = createBottomTabNavigator({
                     size={RF(4)}
                     color={tintColor}
                 />
-        },
-    },
+        }
+    }
 }, {
     tabBarOptions: {
         activeTintColor: Platform.OS === 'ios' ? black : white,
@@ -77,7 +77,17 @@ const MainNavigator = createStackNavigator({
         screen: NewDeck
     },
     DeckView: {
-        screen: DeckView
+        screen: DeckView,
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: black
+            },
+            headerTintColor: white,
+            headerTitleStyle: {
+                fontSize: RF(3),
+                fontWeight: 'bold'
+            }
+        }
     },
     ViewQuiz: {
         screen: ViewQuiz

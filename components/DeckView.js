@@ -1,28 +1,46 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import { Entypo } from '@expo/vector-icons'
+// import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import RF from 'react-native-responsive-fontsize'
-import DeckListView from './DeckListView'
 import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
 import SubmitBtn from './SubmitBtn'
+import { connect } from 'react-redux'
 
 class DeckView extends Component {
+    static navigationOptions = ({ navigation }) => {
+        const { title } = navigation.state.params
+
+        return {
+            title
+        }
+    }
+
     render() {
+        const { title, questions } = this.props
+
         return (
             <ContainerView>
-                <HeaderText
+                { /* <HeaderText
                     style={fonts.h3}>
                     <Entypo
                         name={'arrow-long-left'}
                         size={RF(3)}
-                    />     Deck Title
-                </HeaderText>
+                    />     {title}
+                </HeaderText> */ }
 
                 <CenterView>
-                    <DeckListView />
+                    <CenterView>
+                        <DeckTitleText
+                            style={fonts.h1}>{title}
+                        </DeckTitleText>
+
+                        <NumCardsText
+                            style={fonts.h2}>{questions.length} cards
+                        </NumCardsText>
+                    </CenterView>
 
                     <View style={btns.bottomBtn}>
                         <SubmitBtn
@@ -33,7 +51,7 @@ class DeckView extends Component {
                         </SubmitBtn>
 
                         <SubmitBtn
-                            style={{backgroundColor: black, marginTop: '3%'}}>Start Quiz
+                            style={{backgroundColor: black, marginTop: '3%', marginBottom: '5%'}}>Start Quiz
                         </SubmitBtn>
                     </View>
                 </CenterView>
@@ -45,18 +63,37 @@ class DeckView extends Component {
 const ContainerView = styled.View`
         backgroundColor: white;
     `,
-    HeaderText = styled.Text`
-        background-color: black;
-        color: white;
-        font-weight: bold;
-        padding: 5% 10%;
-        position: absolute;
-        width: 100%;
-    `,
+    // HeaderText = styled.Text`
+    //     background-color: black;
+    //     color: white;
+    //     font-weight: bold;
+    //     padding: 5% 10%;
+    //     position: absolute;
+    //     width: 100%;
+    // `,
     CenterView = styled.View`
         align-items: center;
         justify-content: center;
         height: 100%;
+    `,
+    /* TODO: Refactor */
+    DeckTitleText = styled.Text`
+        font-weight: bold;
+        /* margin-top: 15%; */
+        text-align: center;
+    `,
+    NumCardsText = styled.Text`
+        margin-top: 1%;
+        margin-bottom: 15%;
     `
 
-export default DeckView
+const mapStateToProps = (state, { navigation }) => {
+    const { title, questions } = navigation.state.params
+
+    return {
+        title,
+        questions
+    }
+}
+
+export default connect(mapStateToProps)(DeckView)

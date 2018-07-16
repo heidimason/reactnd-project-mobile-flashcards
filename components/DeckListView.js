@@ -41,8 +41,6 @@ class DeckListView extends Component {
         const { decks } = this.props,
               decksData = Object.keys(decks).map(k => decks[k])
 
-        console.log(decks)
-
         return (
             <View>
                 { decks !== undefined ?
