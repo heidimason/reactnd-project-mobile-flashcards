@@ -6,7 +6,6 @@ import { forms } from '../utils/forms'
 import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
 import SubmitBtn from './SubmitBtn'
-import uuid from 'uuid'
 import { connect } from 'react-redux'
 import { addDeck, fetchDecks } from '../actions'
 
