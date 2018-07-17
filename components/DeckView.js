@@ -18,6 +18,12 @@ class DeckView extends Component {
         }
     }
 
+    toQuestion = () => {
+        const { navigation, title, questions } = this.props
+
+        navigation.navigate('NewQuestion', {title, questions})
+    }
+
     render() {
         const { title, questions } = this.props
 
@@ -44,7 +50,8 @@ class DeckView extends Component {
 
                     <View style={btns.bottomBtn}>
                         <SubmitBtn
-                            style={{borderColor: black, borderWidth: 1}}>
+                            style={{borderColor: black, borderWidth: 1}}
+                            onPress={this.toQuestion}>
                             <Text
                                 style={{color: black}}>Add Card
                             </Text>

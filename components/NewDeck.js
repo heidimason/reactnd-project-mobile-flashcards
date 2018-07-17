@@ -49,7 +49,7 @@ class NewDeck extends Component {
             // Navigate to individual deck view
             this.toDeck()
 
-            // Reset
+            // Reset input
             this.setState({
                 title: ''
             })

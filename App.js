@@ -10,6 +10,7 @@ import RF from 'react-native-responsive-fontsize'
 import ListDecks from './components/ListDecks'
 import NewDeck from './components/NewDeck'
 import DeckView from './components/DeckView'
+import NewQuestion from './components/NewQuestion'
 import ViewQuiz from './components/ViewQuiz'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
@@ -75,6 +76,19 @@ const MainNavigator = createStackNavigator({
     },
     DeckView: {
         screen: DeckView,
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: black
+            },
+            headerTintColor: white,
+            headerTitleStyle: {
+                fontSize: RF(3),
+                fontWeight: 'bold'
+            }
+        }
+    },
+    NewQuestion: {
+        screen: NewQuestion,
         navigationOptions: {
             headerStyle: {
                 backgroundColor: black
