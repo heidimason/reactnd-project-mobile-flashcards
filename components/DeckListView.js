@@ -43,7 +43,7 @@ class DeckListView extends Component {
 
         return (
             <View>
-                { decks !== undefined ?
+                { Object.keys(decks).length !== 0 && decks.constructor === Object ?
                     <FlatList
                         data={decksData}
                         renderItem={this.renderItem}
