@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, FlatList, Text } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { colors } from '../utils/colors'
+import { withNavigation } from 'react-navigation'
 import { connect } from 'react-redux'
 import { fetchDecks } from '../actions'
 
@@ -33,17 +34,26 @@ class DeckListView extends Component {
         this.props.fetchAllDecks()
     }
 
-    renderItem = ({ item }) => {
-        return <DeckListItem {...item} />
-    }
+    renderItem = ({ item }) => (
+        <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('DeckView', item)
+        }>
+            <DeckListItem {...item} />
+        </TouchableOpacity>
+    )
 
     render() {
         const { decks } = this.props,
-              decksData = Object.keys(decks).map(k => decks[k])
+              // decksData = Object.keys(decks).map(k => decks[k]),
+              decksData = Object.values(decks)
 
         return (
             <View>
-                { Object.keys(decks).length !== 0 && decks.constructor === Object ?
+                { Object.keys(decks).length === 0 && decks.constructor === Object ?
+                    <NoDecksText
+                        style={fonts.h2}>You have not added any decks
+                    </NoDecksText>
+                    :
                     <FlatList
                         data={decksData}
                         renderItem={this.renderItem}
@@ -51,10 +61,6 @@ class DeckListView extends Component {
                             (item, index) => index.toString()
                         }
                     />
-                    :
-                    <NoDecksText
-                        style={fonts.h2}>You have not added any decks
-                    </NoDecksText>
                 }
             </View>
         )
@@ -94,4 +100,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckListView)
+export default withNavigation( connect(mapStateToProps, mapDispatchToProps)(DeckListView) )

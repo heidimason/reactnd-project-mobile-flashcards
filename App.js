@@ -73,9 +73,6 @@ const MainNavigator = createStackNavigator({
             header: null
         }
     },
-    NewDeck: {
-        screen: NewDeck
-    },
     DeckView: {
         screen: DeckView,
         navigationOptions: {

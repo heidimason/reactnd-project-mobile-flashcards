@@ -20,9 +20,10 @@ class NewDeck extends Component {
     }
 
     toDeck = () => {
-        const deckObj = this.state
+        const { navigation } = this.props,
+                     deckObj = this.state
 
-        this.props.navigation.navigate('DeckView', {
+        navigation.navigate('DeckView', {
             title: deckObj.title,
             questions: []
         })
