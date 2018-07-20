@@ -31,9 +31,9 @@ class NewQuestion extends Component {
 
     backToDeck = () => {
         const { navigation, title, questions } = this.props,
-                                          card = { title, questions }
+                                          deck = { title, questions }
 
-        navigation.navigate('DeckView', card)
+        navigation.navigate('DeckView', deck)
     }
 
     submitQuestion = () => {
@@ -45,14 +45,14 @@ class NewQuestion extends Component {
         } else if (answer === '') {
             Alert.alert('Please enter an answer for your card')
         } else {
-            const card = { title, questions }
+            const deck = { title, questions }
 
-            card.questions.push({
+            deck.questions.push({
                 question,
                 answer
             })
 
-            submitCard({ title, card })
+            submitCard({ title, deck })
 
             // fetchSingleDeck(questions)
             // console.log(questions)

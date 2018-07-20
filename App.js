@@ -67,6 +67,17 @@ const Tabs = createBottomTabNavigator({
     }
 })
 
+const stackNavOptions = {
+    headerStyle: {
+        backgroundColor: black
+    },
+    headerTintColor: white,
+    headerTitleStyle: {
+        fontSize: RF(3),
+        fontWeight: 'bold'
+    }
+}
+
 const MainNavigator = createStackNavigator({
     Home: {
         screen: Tabs,
@@ -76,32 +87,15 @@ const MainNavigator = createStackNavigator({
     },
     DeckView: {
         screen: DeckView,
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: black
-            },
-            headerTintColor: white,
-            headerTitleStyle: {
-                fontSize: RF(3),
-                fontWeight: 'bold'
-            }
-        }
+        navigationOptions: stackNavOptions
     },
     NewQuestion: {
         screen: NewQuestion,
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: black
-            },
-            headerTintColor: white,
-            headerTitleStyle: {
-                fontSize: RF(3),
-                fontWeight: 'bold'
-            }
-        }
+        navigationOptions: stackNavOptions
     },
     ViewQuiz: {
-        screen: ViewQuiz
+        screen: ViewQuiz,
+        navigationOptions: stackNavOptions
     }
 })
 

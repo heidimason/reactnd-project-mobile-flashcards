@@ -11,11 +11,11 @@ import { addDeck, fetchDecks } from '../actions'
 
 class NewDeck extends Component {
     state = {
-        title: ''
+        titleInput: ''
     }
 
-    changeTitle = title => {
-        this.setState({title})
+    changeTitle = titleInput => {
+        this.setState({titleInput})
     }
 
     toDeck = () => {
@@ -23,22 +23,22 @@ class NewDeck extends Component {
                      deckObj = this.state
 
         navigation.navigate('DeckView', {
-            title: deckObj.title,
+            title: deckObj.titleInput,
             questions: []
         })
     }
 
     submitDeckTitle = () => {
         const { addDeckTitle, fetchAllDecks } = this.props,
-                     { title } = this.state,
-                       deckObj = this.state
+                               { titleInput } = this.state,
+                                      deckObj = this.state
 
-        if (title === '') {
+        if (titleInput === '') {
             Alert.alert('Please enter a title for your deck')
         } else {
             const deck = {
-                [deckObj.title]: {
-                    title: deckObj.title,
+                [deckObj.titleInput]: {
+                    title: deckObj.titleInput,
                     questions: []
                 }
             }
@@ -51,7 +51,7 @@ class NewDeck extends Component {
 
             // Reset input
             this.setState({
-                title: ''
+                titleInput: ''
             })
 
             // Refresh decks (e.g. for home screen)
@@ -77,7 +77,7 @@ class NewDeck extends Component {
                             style={[fonts.h3, forms.textInput]}
                             selectionColor={black}
                             underlineColorAndroid="rgba(0,0,0,0)"
-                            value={this.state.title}
+                            value={this.state.titleInput}
                             onChangeText={this.changeTitle}
                         />
 
