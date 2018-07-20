@@ -29,11 +29,16 @@ class NewQuestion extends Component {
         this.setState({answer})
     }
 
-    submitQuestion = () => {
-        const { title, questions, submitCard, goBack } = this.props,
-                                  { question, answer } = this.state
+    backToDeck = () => {
+        const { navigation, title, questions } = this.props,
+                                          card = { title, questions }
 
-        // console.log(questions.length)
+        navigation.navigate('DeckView', card)
+    }
+
+    submitQuestion = () => {
+        const { title, questions, submitCard } = this.props,
+                          { question, answer } = this.state
 
         if (question === '') {
             Alert.alert('Please enter a question for your card')
@@ -53,7 +58,7 @@ class NewQuestion extends Component {
             // console.log(questions)
 
             // Navigate back to individual deck view
-            goBack()
+            this.backToDeck()
 
             // Reset inputs
             this.setState({
@@ -119,8 +124,7 @@ const mapStateToProps = (state, { navigation }) => {
 
 const mapDispatchToProps = (dispatch, { navigation }) => {
     return {
-        submitCard: c => dispatch( addCard(c) ),
-        goBack: () => navigation.goBack()
+        submitCard: c => dispatch( addCard(c) )
         // fetchSingleDeck: d => dispatch( fetchDeck(d) )
     }
 }
