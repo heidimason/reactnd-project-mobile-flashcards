@@ -11,7 +11,7 @@ import ListDecks from './components/ListDecks'
 import NewDeck from './components/NewDeck'
 import DeckView from './components/DeckView'
 import NewQuestion from './components/NewQuestion'
-import ViewQuiz from './components/ViewQuiz'
+import QuizView from './components/QuizView'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
     return (
@@ -93,8 +93,8 @@ const MainNavigator = createStackNavigator({
         screen: NewQuestion,
         navigationOptions: stackNavOptions
     },
-    ViewQuiz: {
-        screen: ViewQuiz,
+    QuizView: {
+        screen: QuizView,
         navigationOptions: stackNavOptions
     }
 })

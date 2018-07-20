@@ -24,6 +24,12 @@ class DeckView extends Component {
         navigation.navigate('NewQuestion', {title, questions})
     }
 
+    toQuiz = () => {
+        const { navigation, questions } = this.props
+
+        navigation.navigate('QuizView', {questions})
+    }
+
     render() {
         const { title, questions } = this.props
 
@@ -66,7 +72,8 @@ class DeckView extends Component {
                         </SubmitBtn>
 
                         <SubmitBtn
-                            style={{backgroundColor: black, marginTop: '3%', marginBottom: '5%'}}>Start Quiz
+                            style={{backgroundColor: black, marginTop: '3%', marginBottom: '5%'}}
+                            onPress={this.toQuiz}>Start Quiz
                         </SubmitBtn>
                     </View>
                 </CenterView>
