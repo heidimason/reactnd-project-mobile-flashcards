@@ -20,13 +20,29 @@ const formatDecks = res => {
 export const getDecks = () =>
 	// AsyncStorage.clear()
 
-	// AsyncStorage.getItem(DECKS_STORAGE_KEY)
-	// 	.then(formatDecks)
-
 	AsyncStorage.getItem(DECKS_STORAGE_KEY)
-		.then( res => JSON.parse(res) )
+		.then(formatDecks)
+
+	// AsyncStorage.getItem(DECKS_STORAGE_KEY)
+	// 	.then( res => JSON.parse(res) )
+
+// export const getDeck = id =>
+// 	AsyncStorage.getItem(DECKS_STORAGE_KEY)
+// 		.then(res => {
+// 			let decks = JSON.parse(res)
+
+// 			return decks[id]
+// 		})
 
 export const saveDeckTitle = title =>
 	AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(
     	title
   	))
+
+export const addCardToDeck = ({ title, card }) => {
+	AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
+		[title]: card
+	}))
+}
+
+

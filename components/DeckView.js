@@ -43,9 +43,17 @@ class DeckView extends Component {
                             style={fonts.h1}>{title}
                         </DeckTitleText>
 
-                        <NumCardsText
-                            style={fonts.h2}>{questions.length} cards
-                        </NumCardsText>
+                        { questions && questions.length !== 1 &&
+                            <NumCardsText
+                                style={fonts.h2}>{questions.length} cards
+                            </NumCardsText>
+                        }
+
+                        { questions && questions.length === 1 &&
+                            <NumCardsText
+                                style={fonts.h2}>{questions.length} card
+                            </NumCardsText>
+                        }
                     </CenterView>
 
                     <View style={btns.bottomBtn}>

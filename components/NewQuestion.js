@@ -7,12 +7,10 @@ import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
-// import {  } from '../actions'
+import { addCard } from '../actions'
 
 class NewQuestion extends Component {
     static navigationOptions = () => {
-        // const { title } = navigation.state.params
-
         return {
             title: 'Add Card'
         }
@@ -31,35 +29,33 @@ class NewQuestion extends Component {
         this.setState({answer})
     }
 
-    // toDeck = () => {
-    //     const { navigation } = this.props,
-    //                  deckObj = this.state
-
-    //     navigation.navigate('DeckView', {
-    //         title: deckObj.title,
-    //         questions: []
-    //     })
-    // }
-
     submitQuestion = () => {
-        const
-                     { question, answer } = this.state,
-                       deckObj = this.state
+        const { title, questions, submitCard, goBack } = this.props,
+                                  { question, answer } = this.state
+
+        // console.log(questions.length)
 
         if (question === '') {
             Alert.alert('Please enter a question for your card')
         } else if (answer === '') {
             Alert.alert('Please enter an answer for your card')
         } else {
+            const card = { title, questions }
 
+            card.questions.push({
+                question,
+                answer
+            })
 
-            // Dispatch action
+            submitCard({ title, card })
 
+            // fetchSingleDeck(questions)
+            // console.log(questions)
 
-            // Navigate to individual deck view
-            // this.toDeck()
+            // Navigate back to individual deck view
+            goBack()
 
-            // Reset input
+            // Reset inputs
             this.setState({
                 question: '',
                 answer: ''
@@ -68,28 +64,30 @@ class NewQuestion extends Component {
     }
 
     render() {
+        const { question, answer } = this.state
+
         return (
             <ContainerView>
                 <CenterView>
-                    <TextInput
-                        placeholder="Enter your question here"
-                        style={[fonts.h3, forms.textInput]}
-                        selectionColor={black}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        value={this.state.title}
-                        onChangeText={this.changeQuestion}
-                    />
-
-                    <TextInput
-                        placeholder="Enter your answer here"
-                        style={[fonts.h3, forms.textInput]}
-                        selectionColor={black}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                        value={this.state.title}
-                        onChangeText={this.changeAnswer}
-                    />
-
                     <View style={btns.bottomBtn}>
+                        <TextInput
+                            placeholder="Enter your question here"
+                            style={[fonts.h3, forms.textInput]}
+                            selectionColor={black}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            value={this.state.question}
+                            onChangeText={this.changeQuestion}
+                        />
+
+                        <TextInput
+                            placeholder="Enter your answer here"
+                            style={[fonts.h3, forms.textInput]}
+                            selectionColor={black}
+                            underlineColorAndroid="rgba(0,0,0,0)"
+                            value={this.state.answer}
+                            onChangeText={this.changeAnswer}
+                        />
+
                         <SubmitBtn
                             style={{backgroundColor: black, marginTop: '10%'}}
                             onPress={this.submitQuestion}>Submit
@@ -110,10 +108,21 @@ const ContainerView = styled.View`
         height: 100%;
     `
 
-const mapDispatchToProps = dispatch => {
-    return {
+const mapStateToProps = (state, { navigation }) => {
+    const { title, questions } = navigation.state.params
 
+    return {
+        title,
+        questions
     }
 }
 
-export default connect(null, mapDispatchToProps)(NewQuestion)
+const mapDispatchToProps = (dispatch, { navigation }) => {
+    return {
+        submitCard: c => dispatch( addCard(c) ),
+        goBack: () => navigation.goBack()
+        // fetchSingleDeck: d => dispatch( fetchDeck(d) )
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewQuestion)
