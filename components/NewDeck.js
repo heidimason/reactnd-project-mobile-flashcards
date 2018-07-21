@@ -5,6 +5,7 @@ import { fonts } from '../utils/fonts'
 import { forms } from '../utils/forms'
 import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
+import { views } from '../utils/views'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
 import { addDeck, fetchDecks } from '../actions'
@@ -66,7 +67,7 @@ class NewDeck extends Component {
                     style={fonts.h3}>NEW DECK
                 </HeaderText>
 
-                <CenterView>
+                <CenterView style={views.center}>
                     <DeckTitleText
                         style={fonts.h1}>What is the title of your new deck?
                     </DeckTitleText>
@@ -102,9 +103,7 @@ const ContainerView = styled.View`
         width: 100%;
     `,
     CenterView = styled.View`
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+
     `,
     DeckTitleText = styled.Text`
         padding: 10%;

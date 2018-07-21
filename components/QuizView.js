@@ -7,6 +7,7 @@ import RF from 'react-native-responsive-fontsize'
 import { white, black, green, red } from '../utils/colors'
 import SubmitBtn from './SubmitBtn'
 import { btns } from '../utils/btns'
+import { views } from '../utils/views'
 import { connect } from 'react-redux'
 
 class QuizView extends Component {
@@ -19,6 +20,12 @@ class QuizView extends Component {
     onShowAnswer = () => {
         this.setState({
             showAnswer: true
+        })
+    }
+
+    onShowQuestion = () => {
+        this.setState({
+            showAnswer: false
         })
     }
 
@@ -48,17 +55,27 @@ class QuizView extends Component {
             <ContainerView>
                 <Text style={fonts.h2}>{counter + 1}/{questions.length}</Text>
 
-                <CenterView>
-                    <Text style={fonts.h1}>{questions[counter].question}</Text>
-
+                <CenterView stye={views.center}>
                     { showAnswer === false ?
-                        <TouchableOpacity onPress={this.onShowAnswer}>
-                            <AnswerText style={fonts.h2}
-                                onPress={this.onShowAnswer}>Show Answer
-                            </AnswerText>
-                        </TouchableOpacity>
+                        <CenterView style={views.center}>
+                            <Text style={fonts.h1}>{questions[counter].question}</Text>
+
+                            <TouchableOpacity onPress={this.onShowAnswer}>
+                                <QuestionAnswerText
+                                    style={fonts.h2}>Show Answer
+                                </QuestionAnswerText>
+                            </TouchableOpacity>
+                        </CenterView>
                         :
-                        <AnswerText style={fonts.h2}>{questions[counter].answer}</AnswerText>
+                        <CenterView style={views.center}>
+                            <Text style={fonts.h1}>{questions[counter].answer}</Text>
+
+                            <TouchableOpacity onPress={this.onShowQuestion}>
+                                <QuestionAnswerText
+                                    style={fonts.h2}>Show Question
+                                </QuestionAnswerText>
+                            </TouchableOpacity>
+                        </CenterView>
                     }
 
                     <View style={btns.bottomBtn}>
@@ -82,11 +99,9 @@ const ContainerView = styled.View`
         backgroundColor: white;
     `,
     CenterView = styled.View`
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+
     `,
-    AnswerText = styled.Text`
+    QuestionAnswerText = styled.Text`
         color: red;
     `
 

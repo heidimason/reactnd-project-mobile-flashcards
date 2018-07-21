@@ -5,6 +5,7 @@ import { fonts } from '../utils/fonts'
 import { forms } from '../utils/forms'
 import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
+import { views } from '../utils/views'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
 import { addCard } from '../actions'
@@ -31,9 +32,9 @@ class NewQuestion extends Component {
 
     backToDeck = () => {
         const { navigation, title, questions } = this.props,
-                                          deck = { title, questions }
+                                          card = { title, questions }
 
-        navigation.navigate('DeckView', deck)
+        navigation.navigate('DeckView', card)
     }
 
     submitQuestion = () => {
@@ -45,14 +46,14 @@ class NewQuestion extends Component {
         } else if (answer === '') {
             Alert.alert('Please enter an answer for your card')
         } else {
-            const deck = { title, questions }
+            const card = { title, questions }
 
-            deck.questions.push({
+            card.questions.push({
                 question,
                 answer
             })
 
-            submitCard({ title, deck })
+            submitCard({ title, card })
 
             // fetchSingleDeck(questions)
             // console.log(questions)
@@ -73,7 +74,7 @@ class NewQuestion extends Component {
 
         return (
             <ContainerView>
-                <CenterView>
+                <CenterView style={views.center}>
                     <View style={btns.bottomBtn}>
                         <TextInput
                             placeholder="Enter your question here"
@@ -108,9 +109,7 @@ const ContainerView = styled.View`
         background-color: white;
     `,
     CenterView = styled.View`
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+
     `
 
 const mapStateToProps = (state, { navigation }) => {

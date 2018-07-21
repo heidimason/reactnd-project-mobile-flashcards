@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { colors } from '../utils/colors'
+import { text } from '../utils/text'
 import { withNavigation } from 'react-navigation'
 import { connect } from 'react-redux'
 import { fetchDecks } from '../actions'
@@ -11,18 +12,18 @@ const DeckListItem = ({ title, questions }) => {
     return (
         <CenterView>
             <DeckTitleText
-                style={fonts.h1}>{title}
+                style={[fonts.h1, text.deckTitle]}>{title}
             </DeckTitleText>
 
             { questions && questions.length !== 1 &&
                 <NumCardsText
-                    style={fonts.h2}>{questions.length} cards
+                    style={[fonts.h2, text.numCards]}>{questions.length} cards
                 </NumCardsText>
             }
 
             { questions && questions.length === 1 &&
                 <NumCardsText
-                    style={fonts.h2}>{questions.length} card
+                    style={[fonts.h2, text.numCards]}>{questions.length} card
                 </NumCardsText>
             }
         </CenterView>
@@ -79,12 +80,9 @@ const CenterView = styled.View`
         text-align: center;
     `,
     DeckTitleText = styled.Text`
-        font-weight: bold;
         margin-top: 15%;
-        text-align: center;
     `,
     NumCardsText = styled.Text`
-        margin-top: 1%;
         margin-bottom: 15%;
     `
 

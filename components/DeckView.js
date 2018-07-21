@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, Alert } from 'react-native'
 // import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import RF from 'react-native-responsive-fontsize'
 import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
+import { text } from '../utils/text'
+import { views } from '../utils/views'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
 
@@ -27,7 +29,11 @@ class DeckView extends Component {
     toQuiz = () => {
         const { navigation, questions } = this.props
 
-        navigation.navigate('QuizView', {questions})
+        if (questions.length > 0) {
+            navigation.navigate('QuizView', {questions})
+        } else {
+            Alert.alert('Please add at least 1 card')
+        }
     }
 
     render() {
@@ -43,21 +49,21 @@ class DeckView extends Component {
                     />     {title}
                 </HeaderText> */ }
 
-                <CenterView>
-                    <CenterView>
+                <CenterView style={views.center}>
+                    <CenterView style={views.center}>
                         <DeckTitleText
                             style={fonts.h1}>{title}
                         </DeckTitleText>
 
                         { questions && questions.length !== 1 &&
                             <NumCardsText
-                                style={fonts.h2}>{questions.length} cards
+                                style={[fonts.h2, text.numCards]}>{questions.length} cards
                             </NumCardsText>
                         }
 
                         { questions && questions.length === 1 &&
                             <NumCardsText
-                                style={fonts.h2}>{questions.length} card
+                                style={[fonts.h2, text.numCards]}>{questions.length} card
                             </NumCardsText>
                         }
                     </CenterView>
@@ -94,19 +100,14 @@ const ContainerView = styled.View`
     //     width: 100%;
     // `,
     CenterView = styled.View`
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+
     `,
-    /* TODO: Refactor */
     DeckTitleText = styled.Text`
         font-weight: bold;
-        /* margin-top: 15%; */
         text-align: center;
     `,
     NumCardsText = styled.Text`
-        margin-top: 1%;
-        margin-bottom: 15%;
+
     `
 
 const mapStateToProps = (state, { navigation }) => {
