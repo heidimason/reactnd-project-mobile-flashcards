@@ -3,10 +3,10 @@ import { Text, View, Alert } from 'react-native'
 // import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
-import RF from 'react-native-responsive-fontsize'
-import { white, black } from '../utils/colors'
 import { btns } from '../utils/btns'
 import { text } from '../utils/text'
+// import RF from 'react-native-responsive-fontsize'
+import { white, black } from '../utils/colors'
 import { views } from '../utils/views'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
@@ -89,7 +89,7 @@ class DeckView extends Component {
 }
 
 const ContainerView = styled.View`
-        backgroundColor: white;
+        background-color: white;
     `,
     // HeaderText = styled.Text`
     //     background-color: black;

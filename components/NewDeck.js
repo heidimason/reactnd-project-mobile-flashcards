@@ -36,6 +36,7 @@ class NewDeck extends Component {
 
         if (titleInput === '') {
             Alert.alert('Please enter a title for your deck')
+        // TODO: Add validation for duplicate title
         } else {
             const deck = {
                 [deckObj.titleInput]: {
