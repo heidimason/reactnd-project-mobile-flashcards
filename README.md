@@ -8,8 +8,8 @@ To get started right away:
 
 ## Description
 
-React Native app bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
+React Native app bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app)
 
-## Supported platforms
+## Platforms Tested
 
-This app has been tested on iOS (emulator)
+iOS (emulator)
