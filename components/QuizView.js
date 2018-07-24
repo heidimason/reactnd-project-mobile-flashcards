@@ -74,27 +74,34 @@ class QuizView extends Component {
             <ContainerView>
                 { unansweredQuestions ?
                     <View>
-                        <CounterText style={fonts.h2}>{counter + 1} / {questions.length}</CounterText>
+                        <CounterText
+                            style={fonts.h2}>{counter + 1} / {questions.length}
+                        </CounterText>
 
                         <CenterView style={views.center}>
                             { displayAnswer === false ?
                                 <CenterView style={views.center}>
-                                    <Text style={fonts.h1}>{questions[counter].question}</Text>
+                                    <QuestionAnswerText
+                                        style={fonts.h1}>{questions[counter].question}
+                                    </QuestionAnswerText>
 
-                                    <TouchableOpacity onPress={this.onDisplayAnswer}>
-                                        <QuestionAnswerText
+                                    <TouchableOpacity
+                                        onPress={this.onDisplayAnswer}>
+                                        <ShowText
                                             style={fonts.h2}>Show Answer
-                                        </QuestionAnswerText>
+                                        </ShowText>
                                     </TouchableOpacity>
                                 </CenterView>
                                 :
                                 <CenterView style={views.center}>
-                                    <Text style={fonts.h1}>{questions[counter].answer}</Text>
+                                    <QuestionAnswerText
+                                        style={fonts.h1}>{questions[counter].answer}
+                                    </QuestionAnswerText>
 
                                     <TouchableOpacity onPress={this.onDisplayQuestion}>
-                                        <QuestionAnswerText
+                                        <ShowText
                                             style={fonts.h2}>Show Question
-                                        </QuestionAnswerText>
+                                        </ShowText>
                                     </TouchableOpacity>
                                 </CenterView>
                             }
@@ -144,7 +151,11 @@ const ContainerView = styled.View`
 
     `,
     QuestionAnswerText = styled.Text`
+        font-weight: bold;
+    `,
+    ShowText = styled.Text`
         color: red;
+        margin-top: 3%;
     `
 
 const mapStateToProps = (state, { navigation }) => {
