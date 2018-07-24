@@ -12,6 +12,7 @@ import NewDeck from './components/NewDeck'
 import DeckView from './components/DeckView'
 import NewQuestion from './components/NewQuestion'
 import QuizView from './components/QuizView'
+import { setLocalNotification } from './utils/helpers'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
     return (
@@ -100,6 +101,10 @@ const MainNavigator = createStackNavigator({
 })
 
 class FlashcardsApp extends Component {
+    componentDidMount() {
+        setLocalNotification()
+    }
+
     render() {
         return (
             <Provider store={store}>
