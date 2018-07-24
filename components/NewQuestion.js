@@ -8,7 +8,7 @@ import { btns } from '../utils/btns'
 import { views } from '../utils/views'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
-import { addCard } from '../actions'
+import { addCard, fetchDecks } from '../actions'
 
 class NewQuestion extends Component {
     static navigationOptions = () => {
@@ -38,8 +38,8 @@ class NewQuestion extends Component {
     }
 
     submitQuestion = () => {
-        const { title, questions, submitCard } = this.props,
-                          { question, answer } = this.state
+        const { title, questions, submitCard, fetchAllDecks } = this.props,
+                                         { question, answer } = this.state
 
         if (question === '') {
             Alert.alert('Please enter a question for your card')
@@ -55,9 +55,6 @@ class NewQuestion extends Component {
 
             submitCard({ title, card })
 
-            // fetchSingleDeck(questions)
-            // console.log(questions)
-
             // Navigate back to individual deck view
             this.backToDeck()
 
@@ -66,6 +63,9 @@ class NewQuestion extends Component {
                 question: '',
                 answer: ''
             })
+
+            // Refresh decks (e.g. for home screen)
+            fetchAllDecks()
         }
     }
 
@@ -123,8 +123,8 @@ const mapStateToProps = (state, { navigation }) => {
 
 const mapDispatchToProps = (dispatch, { navigation }) => {
     return {
-        submitCard: c => dispatch( addCard(c) )
-        // fetchSingleDeck: d => dispatch( fetchDeck(d) )
+        submitCard: c => dispatch( addCard(c) ),
+        fetchAllDecks: () => dispatch( fetchDecks() )
     }
 }
 
