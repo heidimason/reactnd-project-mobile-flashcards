@@ -10,7 +10,6 @@ import { white, gray, black } from '../utils/colors'
 import { views } from '../utils/views'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
-import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 class DeckView extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -35,9 +34,6 @@ class DeckView extends Component {
         } else {
             Alert.alert('Please add at least 1 card')
         }
-
-        clearLocalNotification()
-            .then(setLocalNotification)
     }
 
     render() {
