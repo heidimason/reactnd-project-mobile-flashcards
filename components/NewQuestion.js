@@ -75,9 +75,9 @@ class NewQuestion extends Component {
         return (
             <ContainerView>
                 <CenterView style={views.center}>
-                    <View style={btns.bottomBtn}>
+                    <TextInputView>
                         <TextInput
-                            placeholder="Enter your question here"
+                            placeholder="Your question here"
                             style={[fonts.h3, forms.textInput]}
                             selectionColor={black}
                             underlineColorAndroid="rgba(0,0,0,0)"
@@ -86,16 +86,18 @@ class NewQuestion extends Component {
                         />
 
                         <TextInput
-                            placeholder="Enter your answer here"
-                            style={[fonts.h3, forms.textInput]}
+                            placeholder="Your answer here"
+                            style={[fonts.h3, forms.textInput, {marginTop: '10%'}]}
                             selectionColor={black}
                             underlineColorAndroid="rgba(0,0,0,0)"
                             value={this.state.answer}
                             onChangeText={this.changeAnswer}
                         />
+                    </TextInputView>
 
+                    <View style={btns.bottomBtn}>
                         <SubmitBtn
-                            style={{backgroundColor: black, marginTop: '10%'}}
+                            style={{backgroundColor: black, marginBottom: '5%'}}
                             onPress={this.submitQuestion}>Submit
                         </SubmitBtn>
                     </View>
@@ -110,6 +112,9 @@ const ContainerView = styled.View`
     `,
     CenterView = styled.View`
 
+    `,
+    TextInputView = styled.View`
+        width: 90%;
     `
 
 const mapStateToProps = (state, { navigation }) => {

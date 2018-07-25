@@ -6,7 +6,7 @@ import { fonts } from '../utils/fonts'
 import { btns } from '../utils/btns'
 import { text } from '../utils/text'
 // import RF from 'react-native-responsive-fontsize'
-import { white, black } from '../utils/colors'
+import { white, gray, black } from '../utils/colors'
 import { views } from '../utils/views'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
@@ -111,7 +111,7 @@ const ContainerView = styled.View`
         text-align: center;
     `,
     NumCardsText = styled.Text`
-
+        color: gray
     `
 
 const mapStateToProps = (state, { navigation }) => {

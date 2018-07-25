@@ -121,11 +121,11 @@ class QuizView extends Component {
                     </View>
                     :
                     <CenterView style={views.center}>
-                        <Text style={fonts.h2}>Score: {score} / {questions.length}</Text>
+                        <Text style={fonts.h1}>Score: {score} / {questions.length}</Text>
 
                         <View style={btns.bottomBtn}>
                             <SubmitBtn style={{backgroundColor: green}}
-                                onPress={this.toQuiz}>Retake Quiz
+                                onPress={this.toQuiz}>Restart Quiz
                             </SubmitBtn>
 
                             <SubmitBtn
@@ -152,6 +152,8 @@ const ContainerView = styled.View`
     `,
     QuestionAnswerText = styled.Text`
         font-weight: bold;
+        margin-right: 5%;
+        margin-left: 5%;
     `,
     ShowText = styled.Text`
         color: red;

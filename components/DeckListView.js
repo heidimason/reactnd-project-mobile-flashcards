@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
-import { colors } from '../utils/colors'
+import { gray } from '../utils/colors'
 import { text } from '../utils/text'
 import { withNavigation } from 'react-navigation'
 import { connect } from 'react-redux'
@@ -83,6 +83,7 @@ const CenterView = styled.View`
         margin-top: 15%;
     `,
     NumCardsText = styled.Text`
+        color: gray;
         margin-bottom: 15%;
     `
 

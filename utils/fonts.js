@@ -7,8 +7,7 @@ export const fonts = StyleSheet.create({
         fontSize: RF(5)
     },
     h2: {
-        fontSize: RF(4),
-        color: gray
+        fontSize: RF(4)
     },
     h3: {
         fontSize: RF(3)
