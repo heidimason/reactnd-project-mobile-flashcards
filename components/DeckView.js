@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, Alert } from 'react-native'
-// import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { btns } from '../utils/btns'
 import { text } from '../utils/text'
-// import RF from 'react-native-responsive-fontsize'
 import { white, gray, black } from '../utils/colors'
 import { views } from '../utils/views'
 import SubmitBtn from './SubmitBtn'
@@ -41,14 +39,6 @@ class DeckView extends Component {
 
         return (
             <ContainerView>
-                { /* <HeaderText
-                    style={fonts.h3}>
-                    <Entypo
-                        name={'arrow-long-left'}
-                        size={RF(3)}
-                    />     {title}
-                </HeaderText> */ }
-
                 <CenterView style={views.center}>
                     <CenterView style={views.center}>
                         <DeckTitleText
@@ -91,14 +81,6 @@ class DeckView extends Component {
 const ContainerView = styled.View`
         background-color: white;
     `,
-    // HeaderText = styled.Text`
-    //     background-color: black;
-    //     color: white;
-    //     font-weight: bold;
-    //     padding: 5% 10%;
-    //     position: absolute;
-    //     width: 100%;
-    // `,
     CenterView = styled.View`
 
     `,

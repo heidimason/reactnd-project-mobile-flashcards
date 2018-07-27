@@ -56,6 +56,7 @@ class DeckListView extends Component {
                     </NoDecksText>
                     :
                     <FlatList
+                        style={{paddingBottom: '35%'}}
                         data={decksData}
                         renderItem={this.renderItem}
                         keyExtractor={
