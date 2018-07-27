@@ -53,6 +53,7 @@ class QuizView extends Component {
 
         navigation.navigate('QuizView')
 
+        // Reset quiz state
         this.setState({
             counter: 0,
             score: 0,

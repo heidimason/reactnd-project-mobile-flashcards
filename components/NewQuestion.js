@@ -53,6 +53,7 @@ class NewQuestion extends Component {
                 answer
             })
 
+            // Dispatch action
             submitCard({ title, card })
 
             // Navigate back to individual deck view
