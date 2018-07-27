@@ -10,19 +10,16 @@ export const FETCH_DECKS = 'FETCH_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_CARD = 'ADD_CARD'
 
-export const fetchDecks = () => {
-	return dispatch => {
-		getDecks()
-			.then( decks =>
-				dispatch({
-					type: FETCH_DECKS,
-					decks
-				})
-			).catch( () =>
-				alert('Error getting decks!')
-			)
-	}
-}
+export const fetchDecks = () =>
+	dispatch => getDecks()
+		.then( decks =>
+			dispatch({
+				type: FETCH_DECKS,
+				decks
+			})
+		).catch( () =>
+			alert('Error getting decks!')
+		)
 
 // export const fetchDeck = d => {
 // 	return dispatch => {
@@ -38,30 +35,24 @@ export const fetchDecks = () => {
 // 	}
 // }
 
-export const addDeck = d => {
-	return dispatch => {
-		saveDeckTitle(d)
-			.then( deck =>
-				dispatch({
-					type: ADD_DECK,
-					deck
-				})
-			).catch( () =>
-				alert('Error adding deck!')
-			)
-	}
-}
+export const addDeck = d =>
+	dispatch => saveDeckTitle(d)
+		.then( deck =>
+			dispatch({
+				type: ADD_DECK,
+				deck
+			})
+		).catch( () =>
+			alert('Error adding deck!')
+		)
 
-export const addCard = d => {
-	return dispatch => {
-		addCardToDeck(d)
-			.then( card =>
-				dispatch({
-					type: ADD_CARD,
-					card
-				})
-			).catch( () =>
-				alert('Error adding card!')
-			)
-	}
-}
+export const addCard = d =>
+	dispatch => addCardToDeck(d)
+		.then( card =>
+			dispatch({
+				type: ADD_CARD,
+				card
+			})
+		).catch( () =>
+			alert('Error adding card!')
+		)
