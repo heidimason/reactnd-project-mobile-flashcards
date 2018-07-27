@@ -23,7 +23,7 @@ export const btns = StyleSheet.create({
         borderRadius: 2,
         alignSelf: 'flex-end',
         alignItems: 'center',
-        width: '60%'
+        width: '65%'
     },
     submitBtnText: {
         color: white,

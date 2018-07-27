@@ -32,11 +32,18 @@ const Tabs = createBottomTabNavigator({
         navigationOptions: {
             tabBarLabel: 'Home',
             tabBarIcon: ({ tintColor }) =>
-                <Ionicons
-                    name='ios-home'
-                    size={RF(4)}
-                    color={tintColor}
-                />
+                Platform.OS === 'ios' ?
+                    <Ionicons
+                        name='ios-home'
+                        size={RF(4)}
+                        color={tintColor}
+                    />
+                    :
+                    <Ionicons
+                        name='md-home'
+                        size={RF(4)}
+                        color={tintColor}
+                    />
         }
     },
     NewDeck: {
