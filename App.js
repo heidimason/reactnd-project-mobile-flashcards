@@ -12,7 +12,7 @@ import NewDeck from './components/NewDeck'
 import DeckView from './components/DeckView'
 import NewQuestion from './components/NewQuestion'
 import QuizView from './components/QuizView'
-import { setLocalNotification } from './utils/helpers'
+import { setLocalNotification } from './utils/notifications'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
     return (

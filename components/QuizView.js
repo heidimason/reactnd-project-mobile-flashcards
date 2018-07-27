@@ -8,7 +8,7 @@ import { views } from '../utils/views'
 import { white, black, green, red } from '../utils/colors'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
-import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
+import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
 
 class QuizView extends Component {
     state = {
