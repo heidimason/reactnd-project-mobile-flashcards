@@ -30,13 +30,16 @@ class NewDeck extends Component {
     }
 
     submitDeckTitle = () => {
-        const { addDeckTitle, fetchAllDecks } = this.props,
-                               { titleInput } = this.state,
-                                      deckObj = this.state
+        const { addDeckTitle, fetchAllDecks, decks } = this.props,
+                                      { titleInput } = this.state,
+                                             deckObj = this.state,
+                                           decksData = Object.values(decks),
+                                          deckTitles = decksData.map(deckTitle => deckTitle.title)
 
         if (titleInput === '') {
             Alert.alert('Please enter a title for your deck')
-        // TODO: Add validation for duplicate title
+        } else if (deckTitles.includes(titleInput)) {
+            Alert.alert('Deck title already exists')
         } else {
             const deck = {
                 [deckObj.titleInput]: {
@@ -111,6 +114,12 @@ const ContainerView = styled.View`
         text-align: center;
     `
 
+const mapStateToProps = decks => {
+    return {
+        decks
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         addDeckTitle: d => dispatch( addDeck(d) ),
@@ -118,4 +127,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(NewDeck)
+export default connect(mapStateToProps, mapDispatchToProps)(NewDeck)
