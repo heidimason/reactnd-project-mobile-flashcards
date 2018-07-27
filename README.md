@@ -12,4 +12,4 @@ React Native app bootstrapped with [Create React Native App](https://github.com/
 
 ## Platforms Tested
 
-iOS (emulator)
+iOS and Android (simulators)
