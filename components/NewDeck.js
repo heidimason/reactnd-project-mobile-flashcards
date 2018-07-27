@@ -38,7 +38,7 @@ class NewDeck extends Component {
 
         if (titleInput === '') {
             Alert.alert('Please enter a title for your deck')
-        } else if (deckTitles.includes(titleInput)) {
+        } else if ( deckTitles.includes(titleInput) ) {
             Alert.alert('Deck title already exists')
         } else {
             const deck = {

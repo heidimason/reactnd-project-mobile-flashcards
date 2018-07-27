@@ -4,6 +4,8 @@ export const views = StyleSheet.create({
     center: {
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100%'
+        height: '100%',
+        marginRight: '5%',
+        marginLeft: '5%'
     }
 })

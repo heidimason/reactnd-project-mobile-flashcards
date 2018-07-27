@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { Entypo } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import { fonts } from '../utils/fonts'
 import { btns } from '../utils/btns'
@@ -89,7 +88,8 @@ class QuizView extends Component {
                             { displayAnswer === false ?
                                 <CenterView style={views.center}>
                                     <QuestionAnswerText
-                                        style={fonts.h1}>{questions[counter].question}
+                                        style={fonts.h1}
+                                        numberOfLines={6}>{questions[counter].question}
                                     </QuestionAnswerText>
 
                                     <TouchableOpacity
@@ -102,7 +102,8 @@ class QuizView extends Component {
                                 :
                                 <CenterView style={views.center}>
                                     <QuestionAnswerText
-                                        style={fonts.h1}>{questions[counter].answer}
+                                        style={fonts.h1}
+                                        numberOfLines={6}>{questions[counter].answer}
                                     </QuestionAnswerText>
 
                                     <TouchableOpacity onPress={this.onDisplayQuestion}>
@@ -128,7 +129,10 @@ class QuizView extends Component {
                     </View>
                     :
                     <CenterView style={views.center}>
-                        <Text style={fonts.h1}>Score: {score} / {questions.length}</Text>
+                        <Text
+                            style={fonts.h1}
+                            numberOfLines={6}>Score: {score} / {questions.length}
+                        </Text>
 
                         <View style={btns.bottomBtn}>
                             <SubmitBtn style={{backgroundColor: green}}
@@ -159,8 +163,7 @@ const ContainerView = styled.View`
     `,
     QuestionAnswerText = styled.Text`
         font-weight: bold;
-        margin-right: 5%;
-        margin-left: 5%;
+        text-align: center;
     `,
     ShowText = styled.Text`
         color: red;

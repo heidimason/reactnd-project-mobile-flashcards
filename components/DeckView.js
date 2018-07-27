@@ -42,7 +42,8 @@ class DeckView extends Component {
                 <CenterView style={views.center}>
                     <CenterView style={views.center}>
                         <DeckTitleText
-                            style={fonts.h1}>{title}
+                            style={fonts.h1}
+                            numberOfLines={6}>{title}
                         </DeckTitleText>
 
                         { questions && questions.length !== 1 &&
