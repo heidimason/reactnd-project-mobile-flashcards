@@ -46,13 +46,11 @@ class DeckView extends Component {
                             numberOfLines={6}>{title}
                         </DeckTitleText>
 
-                        { questions && questions.length !== 1 &&
+                        { questions && questions.length !== 1 ?
                             <NumCardsText
                                 style={[fonts.h2, text.numCards]}>{questions.length} cards
                             </NumCardsText>
-                        }
-
-                        { questions && questions.length === 1 &&
+                            :
                             <NumCardsText
                                 style={[fonts.h2, text.numCards]}>{questions.length} card
                             </NumCardsText>
