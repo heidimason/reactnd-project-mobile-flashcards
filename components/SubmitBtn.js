@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity, Platform } from 'react-native'
-import { btns } from '../utils/btns'
+import { btns } from '../utils/styles/btns'
 
 function SubmitBtn ({ children, onPress, style = {} }) {
   	return (

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 import RF from 'react-native-responsive-fontsize'
-import { gray } from '../utils/colors'
+import { gray } from './colors'
 
 export const fonts = StyleSheet.create({
     h1: {

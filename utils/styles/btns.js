@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { white } from '../utils/colors'
+import { white } from './colors'
 import RF from 'react-native-responsive-fontsize'
 
 export const btns = StyleSheet.create({

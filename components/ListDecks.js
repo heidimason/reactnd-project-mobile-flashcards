@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import styled from 'styled-components/native'
-import { fonts } from '../utils/fonts'
+import { fonts } from '../utils/styles/fonts'
 import DeckListView from './DeckListView'
 
 class ListDecks extends Component {
