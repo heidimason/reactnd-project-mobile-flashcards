@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { Text, View, Alert } from 'react-native'
-import styled from 'styled-components/native'
+import { Text, View, Alert, StyleSheet } from 'react-native'
+import { ContainerView, CenterView, DeckTitleText, NumCardsText, BtnBottomView } from '../utils/styles'
 import { fonts } from '../utils/styles/fonts'
-import { btns } from '../utils/styles/btns'
-import { text } from '../utils/styles/text'
-import { white, gray, black } from '../utils/styles/colors'
-import { views } from '../utils/styles/views'
+import { gray, black } from '../utils/styles/colors'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
 
@@ -39,8 +36,8 @@ class DeckView extends Component {
 
         return (
             <ContainerView>
-                <CenterView style={views.center}>
-                    <CenterView style={views.center}>
+                <CenterView style={styles.center}>
+                    <CenterView style={styles.center}>
                         <DeckTitleText
                             style={fonts.h1}
                             numberOfLines={6}>{title}
@@ -48,16 +45,16 @@ class DeckView extends Component {
 
                         { questions && questions.length !== 1 ?
                             <NumCardsText
-                                style={[fonts.h2, text.numCards]}>{questions.length} cards
+                                style={[fonts.h2, styles.numCards]}>{questions.length} cards
                             </NumCardsText>
                             :
                             <NumCardsText
-                                style={[fonts.h2, text.numCards]}>{questions.length} card
+                                style={[fonts.h2, styles.numCards]}>{questions.length} card
                             </NumCardsText>
                         }
                     </CenterView>
 
-                    <View style={btns.bottomBtn}>
+                    <BtnBottomView>
                         <SubmitBtn
                             style={{borderColor: black, borderWidth: 1}}
                             onPress={this.toQuestion}>
@@ -70,26 +67,22 @@ class DeckView extends Component {
                             style={{backgroundColor: black, marginTop: '3%', marginBottom: '5%'}}
                             onPress={this.toQuiz}>Start Quiz
                         </SubmitBtn>
-                    </View>
+                    </BtnBottomView>
                 </CenterView>
             </ContainerView>
         )
     }
 }
 
-const ContainerView = styled.View`
-        background-color: white;
-    `,
-    CenterView = styled.View`
-
-    `,
-    DeckTitleText = styled.Text`
-        font-weight: bold;
-        text-align: center;
-    `,
-    NumCardsText = styled.Text`
+const styles = StyleSheet.create({
+    center: {
+        justifyContent: 'center',
+        height: '100%'
+    },
+    numCards: {
         color: gray
-    `
+    }
+})
 
 const mapStateToProps = (state, { navigation }) => {
     const { title, questions } = navigation.state.params

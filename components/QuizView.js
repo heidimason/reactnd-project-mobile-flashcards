@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
+import { ContainerView, CenterView, BtnBottomView } from '../utils/styles'
 import { fonts } from '../utils/styles/fonts'
-import { btns } from '../utils/styles/btns'
-import { views } from '../utils/styles/views'
-import { white, black, green, red } from '../utils/styles/colors'
+import { black, green, red } from '../utils/styles/colors'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
 import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
@@ -84,9 +83,9 @@ class QuizView extends Component {
                             style={fonts.h2}>{counter + 1} / {questions.length}
                         </CounterText>
 
-                        <CenterView style={views.center}>
+                        <CenterView style={styles.center}>
                             { displayAnswer === false ?
-                                <CenterView style={views.center}>
+                                <CenterView style={styles.center}>
                                     <QuestionAnswerText
                                         style={fonts.h1}
                                         numberOfLines={6}>{questions[counter].question}
@@ -100,7 +99,7 @@ class QuizView extends Component {
                                     </TouchableOpacity>
                                 </CenterView>
                                 :
-                                <CenterView style={views.center}>
+                                <CenterView style={styles.center}>
                                     <QuestionAnswerText
                                         style={fonts.h1}
                                         numberOfLines={6}>{questions[counter].answer}
@@ -114,7 +113,7 @@ class QuizView extends Component {
                                 </CenterView>
                             }
 
-                            <View style={btns.bottomBtn}>
+                            <BtnBottomView>
                                 <SubmitBtn
                                     style={{backgroundColor: green}}
                                     onPress={this.isCorrect}>Correct
@@ -124,17 +123,17 @@ class QuizView extends Component {
                                     style={{backgroundColor: red, marginTop: '3%', marginBottom: '5%'}}
                                     onPress={this.isIncorrect}>Incorrect
                                 </SubmitBtn>
-                            </View>
+                            </BtnBottomView>
                         </CenterView>
                     </View>
                     :
-                    <CenterView style={views.center}>
+                    <CenterView style={styles.center}>
                         <Text
                             style={fonts.h1}
                             numberOfLines={6}>Score: {score} / {questions.length}
                         </Text>
 
-                        <View style={btns.bottomBtn}>
+                        <BtnBottomView>
                             <SubmitBtn style={{backgroundColor: green}}
                                 onPress={this.toQuiz}>Restart Quiz
                             </SubmitBtn>
@@ -143,7 +142,7 @@ class QuizView extends Component {
                                 style={{backgroundColor: black, marginTop: '3%', marginBottom: '5%'}}
                                 onPress={this.backToDeck}>Back to Deck
                             </SubmitBtn>
-                        </View>
+                        </BtnBottomView>
                     </CenterView>
                 }
             </ContainerView>
@@ -151,15 +150,9 @@ class QuizView extends Component {
     }
 }
 
-const ContainerView = styled.View`
-        background-color: white;
-    `,
-    CounterText = styled.Text`
+const CounterText = styled.Text`
         margin: 5%;
         position: absolute;
-    `,
-    CenterView = styled.View`
-
     `,
     QuestionAnswerText = styled.Text`
         font-weight: bold;
@@ -169,6 +162,13 @@ const ContainerView = styled.View`
         color: red;
         margin-top: 3%;
     `
+
+const styles = StyleSheet.create({
+    center: {
+        justifyContent: 'center',
+        height: '100%'
+    }
+})
 
 const mapStateToProps = (state, { navigation }) => {
     const { title, questions } = navigation.state.params

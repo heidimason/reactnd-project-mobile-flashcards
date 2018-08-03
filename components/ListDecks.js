@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import styled from 'styled-components/native'
+import { Text, View, StyleSheet } from 'react-native'
+import { ContainerView, HeaderText } from '../utils/styles'
 import { fonts } from '../utils/styles/fonts'
 import DeckListView from './DeckListView'
 
 class ListDecks extends Component {
     render() {
         return (
-            <ContainerView>
+            <ContainerView style={styles.container}>
                 <HeaderText
-                    style={fonts.h3}>DECKS
+                    style={[fonts.h3, styles.header]}>DECKS
                 </HeaderText>
 
                 <DeckListView />
@@ -18,13 +18,13 @@ class ListDecks extends Component {
     }
 }
 
-const ContainerView = styled.View`
-        background-color: white;
-        height: 100%;
-    `,
-    HeaderText = styled.Text`
-        padding-top: 10%;
-        padding-left: 10%;
-    `
+const styles = StyleSheet.create({
+    container: {
+        height: '100%'
+    },
+    header: {
+        paddingLeft: '10%'
+    }
+})
 
 export default ListDecks

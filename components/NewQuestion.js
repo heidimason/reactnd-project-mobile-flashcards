@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { View, TextInput, Alert } from 'react-native'
+import { View, TextInput, Alert, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
+import { ContainerView, CenterView, BtnBottomView } from '../utils/styles'
 import { fonts } from '../utils/styles/fonts'
 import { forms } from '../utils/styles/forms'
-import { white, black } from '../utils/styles/colors'
-import { btns } from '../utils/styles/btns'
-import { views } from '../utils/styles/views'
+import { black } from '../utils/styles/colors'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
 import { addCard, fetchDecks } from '../actions'
@@ -75,14 +74,14 @@ class NewQuestion extends Component {
 
         return (
             <ContainerView>
-                <CenterView style={views.center}>
+                <CenterView style={styles.center}>
                     <TextInputView>
                         <TextInput
                             placeholder="Your question here"
                             style={[fonts.h3, forms.textInput]}
                             selectionColor={black}
                             underlineColorAndroid="rgba(0,0,0,0)"
-                            value={this.state.question}
+                            value={question}
                             onChangeText={this.changeQuestion}
                         />
 
@@ -91,32 +90,33 @@ class NewQuestion extends Component {
                             style={[fonts.h3, forms.textInput, {marginTop: '10%'}]}
                             selectionColor={black}
                             underlineColorAndroid="rgba(0,0,0,0)"
-                            value={this.state.answer}
+                            value={answer}
                             onChangeText={this.changeAnswer}
                         />
                     </TextInputView>
 
-                    <View style={btns.bottomBtn}>
+                    <BtnBottomView>
                         <SubmitBtn
                             style={{backgroundColor: black, marginBottom: '5%'}}
                             onPress={this.submitQuestion}>Submit
                         </SubmitBtn>
-                    </View>
+                    </BtnBottomView>
                 </CenterView>
             </ContainerView>
         )
     }
 }
 
-const ContainerView = styled.View`
-        background-color: white;
-    `,
-    CenterView = styled.View`
-
-    `,
-    TextInputView = styled.View`
+const TextInputView = styled.View`
         width: 90%;
     `
+
+const styles = StyleSheet.create({
+    center: {
+        justifyContent: 'center',
+        height: '100%'
+    }
+})
 
 const mapStateToProps = (state, { navigation }) => {
     const { title, questions } = navigation.state.params

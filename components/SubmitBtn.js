@@ -1,22 +1,49 @@
 import React from 'react'
-import { Text, TouchableOpacity, Platform } from 'react-native'
-import { btns } from '../utils/styles/btns'
+import { Text, TouchableOpacity, Platform, StyleSheet } from 'react-native'
+import { white } from '../utils/styles/colors'
+import RF from 'react-native-responsive-fontsize'
 
 function SubmitBtn ({ children, onPress, style = {} }) {
   	return (
     	<TouchableOpacity
         	style={[
                 Platform.OS === 'ios'
-                ? btns.iosSubmitBtn
-                : btns.AndroidSubmitBtn,
+                ? styles.iosSubmitBtn
+                : styles.AndroidSubmitBtn,
                 style
             ]}
         	onPress={onPress}>
         	<Text
-                style={btns.submitBtnText}>{children}
+                style={styles.submitBtnText}>{children}
             </Text>
     	</TouchableOpacity>
   	)
 }
+
+const styles = StyleSheet.create({
+    iosSubmitBtn: {
+        padding: 10,
+        borderRadius: 7,
+        height: 45,
+        marginLeft: 40,
+        marginRight: 40
+    },
+    AndroidSubmitBtn: {
+        padding: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        height: 45,
+        borderRadius: 2,
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+        width: '65%'
+    },
+    submitBtnText: {
+        color: white,
+        fontSize: RF(3),
+        fontWeight: 'bold',
+        textAlign: 'center'
+    }
+})
 
 export default SubmitBtn

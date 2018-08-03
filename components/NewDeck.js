@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, Alert } from 'react-native'
-import styled from 'styled-components/native'
+import { View, Text, TextInput, Alert, StyleSheet } from 'react-native'
+import { ContainerView, HeaderText, CenterView, DeckTitleText, BtnBottomView } from '../utils/styles'
 import { fonts } from '../utils/styles/fonts'
 import { forms } from '../utils/styles/forms'
-import { white, black } from '../utils/styles/colors'
-import { btns } from '../utils/styles/btns'
-import { views } from '../utils/styles/views'
+import { black } from '../utils/styles/colors'
 import SubmitBtn from './SubmitBtn'
 import { connect } from 'react-redux'
 import { addDeck, fetchDecks } from '../actions'
@@ -68,15 +66,15 @@ class NewDeck extends Component {
         return (
             <ContainerView>
                 <HeaderText
-                    style={fonts.h3}>NEW DECK
+                    style={[fonts.h3, styles.header]}>NEW DECK
                 </HeaderText>
 
-                <CenterView style={views.center}>
+                <CenterView style={styles.center}>
                     <DeckTitleText
                         style={fonts.h1}>What is the title of your new deck?
                     </DeckTitleText>
 
-                    <View style={btns.bottomBtn}>
+                    <BtnBottomView>
                         <TextInput
                             placeholder="Deck Title"
                             style={[fonts.h3, forms.textInput]}
@@ -90,29 +88,27 @@ class NewDeck extends Component {
                             style={{backgroundColor: black, marginTop: '10%'}}
                             onPress={this.submitDeckTitle}>Create Deck
                         </SubmitBtn>
-                    </View>
+                    </BtnBottomView>
                 </CenterView>
             </ContainerView>
         )
     }
 }
 
-const ContainerView = styled.View`
-        background-color: white;
-    `,
-    HeaderText = styled.Text`
-        padding: 10%;
-        position: absolute;
-        text-align: right;
-        width: 100%;
-    `,
-    CenterView = styled.View`
-
-    `,
-    DeckTitleText = styled.Text`
-        padding: 10%;
-        text-align: center;
-    `
+const styles = StyleSheet.create({
+    header: {
+        paddingTop: '10%',
+        paddingRight: '10%',
+        paddingBottom: '10%',
+        position: 'absolute',
+        textAlign: 'right',
+        width: '100%'
+    },
+    center: {
+        justifyContent: 'center',
+        height: '100%'
+    }
+})
 
 const mapStateToProps = decks => {
     return {
