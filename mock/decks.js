@@ -19,7 +19,7 @@ export const starterData = {
 		    	answer: 'It determines how to make efficient changes to the DOM. With diffing, old DOM nodes are taken out and replaced only when necessary. This way, the app doesn\'t perform any unnecessary operations to figure out when to render content.'
 		    },
 		    {
-		    	questions: 'What are some disadvantages of React?',
+		    	question: 'What are some disadvantages of React?',
 		    	answer: 'It is not HTML template based, uses CSS in JS, does not scale down well'
 		    }
 		]
@@ -29,11 +29,31 @@ export const starterData = {
 		questions: [
 			{
         		question: 'What is a closure?',
-        		answer: 'The combination of a function and the lexical environment within which that function was declared.'
+        		answer: 'A function with access to its own private variables'
       		},
 		    {
-		    	questions: 'What is a callback?',
+		    	question: 'What is a callback?',
 		    	answer: 'A function to be executed after another function has finished executing'
+		    },
+		    {
+		    	question: 'What is a set',
+		    	answer: 'A collection of unique items'
+		    },
+		    {
+		    	question: 'What is the DOM',
+		    	answer: 'The Document Object Model; the object that represents the HTML document with which your JS interacts'
+		    },
+		    {
+		    	question: 'What is a property?',
+		    	answer: 'An object specific variable that stores information'
+		    },
+		    {
+		    	question: 'What is a method?',
+		    	answer: 'An object specific function that lets your object do something or lets something be done to it'
+		    },
+		    {
+		    	question: 'What is encapsulation?',
+		    	answer: 'It describes consolidating an object\'s properties and methods into a package and attaching it to a variable'
 		    }
 		]
 	}

@@ -44,5 +44,3 @@ export const addCardToDeck = ({ title, card }) => {
 		[title]: card
 	}))
 }
-
-
