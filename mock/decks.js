@@ -54,6 +54,10 @@ export const starterData = {
 		    {
 		    	question: 'What is encapsulation?',
 		    	answer: 'It describes consolidating an object\'s properties and methods into a package and attaching it to a variable'
+		    },
+		    {
+		    	question: 'What is a major difference between arrays and strings?',
+		    	answer: 'Strings cannot be manipulated (i.e. they are immutable)'
 		    }
 		]
 	}
