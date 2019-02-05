@@ -58,6 +58,14 @@ export const starterData = {
 		    {
 		    	question: 'What is a major difference between arrays and strings?',
 		    	answer: 'Strings cannot be manipulated (i.e. they are immutable)'
+		    },
+		    {
+		    	question: 'What is a singly linked list?',
+		    	answer: 'A data structure comprised of objects that point to each other'
+		    },
+		    {
+		    	question: 'What is recursion?',
+		    	answer: 'The ability of a function to call itself'
 		    }
 		]
 	}
