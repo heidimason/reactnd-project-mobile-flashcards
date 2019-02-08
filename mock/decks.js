@@ -20,7 +20,11 @@ export const starterData = {
 		    },
 		    {
 		    	question: 'What are some disadvantages of React?',
-		    	answer: 'It is not HTML template based, uses CSS in JS, does not scale down well'
+		    	answer: 'It is not HTML template based, does not scale down well'
+		    },
+		    {
+		    	question: 'Does the .map() method return a new array or modify the original array?',
+		    	answer: 'It returns a new array'
 		    }
 		]
 	},
@@ -31,6 +35,10 @@ export const starterData = {
         		question: 'What is a closure?',
         		answer: 'A function with access to its own private variables'
       		},
+      		{
+      			question: 'What is a use for a closure?',
+      			answer: 'Assigning functions in for loops'
+      		}
 		    {
 		    	question: 'What is a callback?',
 		    	answer: 'A function to be executed after another function has finished executing'
