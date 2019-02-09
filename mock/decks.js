@@ -23,8 +23,8 @@ export const starterData = {
 		    	answer: 'It is not HTML template based, does not scale down well'
 		    },
 		    {
-		    	question: 'Does the .map() method return a new array or modify the original array?',
-		    	answer: 'It returns a new array'
+		    	question: 'What is this.props?',
+		    	answer: 'An object with the properties (props) passed into the component'
 		    }
 		]
 	},
@@ -74,6 +74,10 @@ export const starterData = {
 		    {
 		    	question: 'What is recursion?',
 		    	answer: 'The ability of a function to call itself'
+		    },
+		    {
+		    	question: 'Do the .map() and .filter() methods return a new array or modify the original array?',
+		    	answer: 'New array'
 		    }
 		]
 	}
