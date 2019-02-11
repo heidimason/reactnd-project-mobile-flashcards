@@ -25,6 +25,14 @@ export const starterData = {
 		    {
 		    	question: 'What is this.props?',
 		    	answer: 'An object with the properties (props) passed into the component'
+		    },
+		    {
+		    	question: 'What do props represent?',
+		    	answer: 'Read-only data that are immutable'
+		    },
+		    {
+			    question: 'What does state represent?',
+			    answer: 'Mutable data that ultimately affects what is rendered on the page'
 		    }
 		]
 	},
