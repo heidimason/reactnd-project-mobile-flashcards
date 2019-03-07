@@ -86,6 +86,26 @@ export const starterData = {
 		    {
 		    	question: 'Do the .map() and .filter() methods return a new array or modify the original array?',
 		    	answer: 'New array'
+		    },
+		    {
+		    	question: 'What are 2 important JS programming paradigms?',
+		    	answer: 'prototypal object-oriented and functional'
+		    },
+		    {
+		    	question: 'What does two-way data binding mean?',
+		    	answer: 'UI fields are bound to model data dynamically such that when a UI field changes, the model data changes with it and vice-versa'
+		    },
+		    {
+		    	question: 'What does one-way data flow mean?',
+		    	answer: 'The model is the single source of truth'
+		    },
+		    {
+		    	question: 'What does synchronous programming mean?',
+		    	answer: 'Barring conditionals and function calls, code is executed sequentially from top-to-bottom, blocking on long-running tasks such as network requests'
+		    },
+		    {
+		    	question: 'What does asynchronous programming mean?',
+		    	answer: 'The engine runs in an event loop. UIs are asynchronous by nature.'
 		    }
 		]
 	}
