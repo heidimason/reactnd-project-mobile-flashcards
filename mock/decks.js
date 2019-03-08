@@ -49,7 +49,7 @@ export const starterData = {
       		}
 		    {
 		    	question: 'What is a callback?',
-		    	answer: 'A function to be executed after another function has finished executing'
+		    	answer: 'A function to be passed and to executed after another function has finished executing; the default JS technique for asynchronous work'
 		    },
 		    {
 		    	question: 'What is a set',
@@ -105,7 +105,23 @@ export const starterData = {
 		    },
 		    {
 		    	question: 'What does asynchronous programming mean?',
-		    	answer: 'The engine runs in an event loop. UIs are asynchronous by nature.'
+		    	answer: 'The engine runs in an event loop. UIs are asynchronous by nature. The code happens at an unknown or unpredictable time'
+		    },
+		    {
+		    	question: 'What is a Promise?',
+		    	answer: 'An object used for deferred and asynchronous computations. A try/catch wrapper around asynchronous code'
+		    },
+		    {
+		    	question: 'Are let and const scoped to the block or function?',
+		    	answer: 'The block'
+		    },
+		    {
+		    	question: 'When should you use let?',
+		    	answer: 'When you plan to reassign new values to a variable'
+		    },
+		    {
+		    	question: 'When should you use const?',
+		    	answer: 'When you don\'t plan on reassigning new values to a variable'
 		    }
 		]
 	}
