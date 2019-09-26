@@ -33,6 +33,27 @@ export const starterData = {
 		    {
 			    question: 'What does state represent?',
 			    answer: 'Mutable data that ultimately affects what is rendered on the page'
+		    },
+		    {
+		    	question: 'What is a hook?',
+		    	answer: 'It allows us to add functionality to a function-based component (e.g. state)'
+		    }
+		]
+	},
+	Redux: {
+		title: 'Redux',
+		questions: [
+		    {
+		    	question: 'What is a reducer?',
+		    	answer: 'A function that manages changes to an object (e.g. React state); must always return a value'
+		    },
+		    {
+		    	question: 'What is an action?',
+		    	answer: 'An object that changes the state object'
+		    },
+		    {
+		    	question: 'What is a dispatch?',
+		    	answer: 'A function that runs the reducer'
 		    }
 		]
 	},
