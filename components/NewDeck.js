@@ -97,9 +97,8 @@ class NewDeck extends Component {
 
 const styles = StyleSheet.create({
     header: {
-        paddingTop: '10%',
+        paddingVertical: '10%',
         paddingRight: '10%',
-        paddingBottom: '10%',
         position: 'absolute',
         textAlign: 'right',
         width: '100%'
