@@ -25,13 +25,11 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 7,
         height: 45,
-        marginLeft: 40,
-        marginRight: 40
+        marginHorizontal: 40
     },
     AndroidSubmitBtn: {
         padding: 10,
-        paddingLeft: 30,
-        paddingRight: 30,
+        paddingHorizontal: 30,
         height: 45,
         borderRadius: 2,
         alignSelf: 'flex-end',
