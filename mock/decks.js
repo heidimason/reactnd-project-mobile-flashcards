@@ -62,7 +62,7 @@ export const starterData = {
 		questions: [
 			{
         		question: 'What is a closure?',
-        		answer: 'A function with access to its own private variables'
+        		answer: 'A function that accesses a variable "outside" itself'
       		},
       		{
       			question: 'What is a use for a closure?',
@@ -143,6 +143,14 @@ export const starterData = {
 		    {
 		    	question: 'When should you use const?',
 		    	answer: 'When you don\'t plan on reassigning new values to a variable'
+		    },
+		    {
+		    	question: 'What is memoization?',
+		    	answer: 'Storing the arguments of each function call along with the result. If the function is called again with the same arguments, return the precomputed result, rather than running the function again. Optimizes recursion'
+		    },
+		    {
+		    	question: 'What is the difference between undefined and null?',
+		    	answer: 'In undefined, "[a] variable...has not been assigned a value..." (MDN). In null, a variable has been assigned a value.'
 		    }
 		]
 	}
